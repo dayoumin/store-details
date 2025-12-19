@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUS Premium Project Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+      overflow: hidden;
+      background-color: #0f172a;
+    }
+
+    .glass-nav {
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-tab {
+      position: relative;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      color: #94a3b8;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 1;
+    }
+
+    .nav-tab:hover {
+      color: #f1f5f9;
+    }
+
+    .nav-tab.active {
+      color: #38bdf8;
+    }
+
+    .nav-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 20%;
+      right: 20%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      border-radius: 99px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+    }
+
+    .glow-logo {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
+    }
+
+    .viewer-container {
+      height: calc(100vh - 64px);
+      background: #1e293b;
+      position: relative;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: white;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    /* 럭셔리 로딩 표시기 */
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+      }
+
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="flex flex-col h-screen">
+    <!-- Main Hub Navigation -->
+    <nav class="glass-nav flex items-center px-8 z-50 h-16">
+      <div class="mr-12">
+        <span class="glow-logo font-extrabold tracking-tighter text-2xl uppercase">LUS Control</span>
+      </div>
+
+      <div class="flex h-full gap-2 text-sm uppercase">
+        <button onclick="switchView('detail', this)" class="nav-tab active">
+          <i class="fas fa-desktop text-base"></i> <span>Detail Pro</span>
+        </button>
+        <button onclick="switchView('detail_v1', this)" class="nav-tab">
+          <i class="fas fa-history text-base"></i> <span>Detail V1</span>
+        </button>
+        <button onclick="switchView('lens', this)" class="nav-tab">
+          <i class="fas fa-shield-halved text-base"></i> <span>Lens Guide</span>
+        </button>
+        <button onclick="switchView('care', this)" class="nav-tab">
+          <i class="fas fa-wand-magic-sparkles text-base"></i> <span>Care Setup</span>
+        </button>
+        <button onclick="switchView('center', this)" class="nav-tab">
+          <i class="fas fa-layer-group text-base"></i> <span>Integration</span>
+        </button>
+        <button onclick="switchView('research', this)" class="nav-tab">
+          <i class="fas fa-microscope text-base"></i> <span>Research Hub</span>
+        </button>
+      </div>
+
+      <div class="ml-auto flex items-center gap-6">
+        <div class="flex items-center gap-2 px-4 py-2 bg-slate-800/50 rounded-full border border-slate-700/50">
+          <div class="status-dot"></div>
+          <span id="file-path" class="text-slate-400 text-[10px] font-mono tracking-widest uppercase">READY:
+            detail_page.html</span>
+        </div>
+        <div class="flex gap-3">
+          <button
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:text-white transition">
+            <i class="fas fa-cog"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Viewer Area -->
+    <main class="viewer-container p-4 pb-0 bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
+      <iframe id="viewer" src="detail_page.html"></iframe>
+    </main>
+  </div>
+
+  <script>
+    function switchView(type, el) {
+      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+      el.classList.add('active');
+
+      const viewer = document.getElementById('viewer');
+      const pathDisplay = document.getElementById('file-path');
+
+      let targetFile = '';
+      switch (type) {
+        case 'detail': targetFile = 'detail_page.html'; break;
+        case 'detail_v1': targetFile = 'detail_v1.html'; break;
+        case 'lens': targetFile = 'lens_guide.html'; break;
+        case 'care': targetFile = 'care_guide.html'; break;
+        case 'center': targetFile = 'guide_center.html'; break;
+        case 'research': targetFile = 'research_center.html'; break;
+      }
+
+      viewer.src = targetFile;
+      pathDisplay.innerText = 'SYNCED: ' + targetFile;
+      localStorage.setItem('lus_active_tab_pro', type);
+    }
+
+    window.onload = function () {
+      const savedTab = localStorage.getItem('lus_active_tab_pro') || 'detail';
+      const tabBtn = document.querySelector(`button[onclick*="'${savedTab}'"]`);
+      if (tabBtn) tabBtn.click();
+    };
+  </script>
+</body>
+
+</html>

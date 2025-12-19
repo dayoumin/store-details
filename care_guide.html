@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUS 수경 오해 타파 & 수명 연장 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .guide-container {
+            max-width: 860px;
+            margin: 0 auto;
+            background-color: white;
+            shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .save-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="save-btn">
+        <button onclick="saveAsImage()"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg flex items-center gap-2">
+            <i class="fas fa-download"></i> 이미지로 저장
+        </button>
+    </div>
+
+    <div id="capture-area" class="guide-container pb-20">
+        <!-- Header -->
+        <div class="bg-slate-900 text-white p-12 text-center">
+            <div class="inline-block bg-[#FF9F1C] text-black px-4 py-1.5 rounded font-bold text-sm mb-4">LUS 프리미엄 가이드
+            </div>
+            <h1 class="text-4xl font-black leading-tight mb-4">잠깐! 불량이 아닙니다.<br>오해 타파 & 수명 연장 가이드</h1>
+            <p class="text-slate-400 text-lg">루스 수경을 더 선명하게, 더 오래 사용하는 비법</p>
+        </div>
+
+        <div class="p-8 space-y-12">
+            <!-- 1. Anti-fog -->
+            <section>
+                <div class="flex items-center gap-4 mb-6 border-b-2 border-red-500 pb-2">
+                    <span class="text-4xl">🌫️</span>
+                    <h2 class="text-2xl font-bold">안티포그(김서림 방지)의 진실</h2>
+                </div>
+                <div class="bg-red-50 p-6 rounded-2xl mb-6">
+                    <p class="text-lg leading-relaxed text-slate-700">
+                        안티포그는 코팅 특성상 <strong>소모품</strong>입니다. 수영장 물의 염소, 열기, 마찰로 인해 서서히 사라지는 것이 정상입니다. LUS는 2중 코팅으로 지속력을
+                        높였으나 관리가 핵심입니다.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="border-2 border-red-100 p-6 rounded-xl text-center">
+                        <div class="text-3xl mb-2">🚫</div>
+                        <h3 class="font-bold text-red-600 mb-2">절대 금지</h3>
+                        <p class="text-sm text-slate-500">손이나 수건으로 렌즈 안쪽을 문지르지 마세요. 코팅이 즉시 파괴됩니다.</p>
+                    </div>
+                    <div class="border-2 border-blue-100 p-6 rounded-xl text-center">
+                        <div class="text-3xl mb-2">💡</div>
+                        <h3 class="font-bold text-blue-600 mb-2">해결 방법</h3>
+                        <p class="text-sm text-slate-500">김이 서리기 시작하면 '안티포그액'을 사용하여 코팅을 재생시켜주세요.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Leak proof -->
+            <section>
+                <div class="flex items-center gap-4 mb-6 border-b-2 border-blue-500 pb-2">
+                    <span class="text-4xl">💧</span>
+                    <h2 class="text-2xl font-bold">물이 샌다면? 체크리스트</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+                        <i class="fas fa-check-circle text-blue-500 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold">이물질 끼임 확인</h4>
+                            <p class="text-slate-500 text-sm">머리카락이나 수모 끝이 실리콘 안쪽으로 끼어들어가지는 않았나요?</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 bg-slate-50 rounded-xl">
+                        <i class="fas fa-check-circle text-blue-500 text-xl mt-1"></i>
+                        <div>
+                            <h4 class="font-bold">압박보다는 밀착</h4>
+                            <p class="text-slate-500 text-sm">너무 꽉 조이는 것보다, 내 얼굴 굴곡에 맞게 실리콘이 안착되도록 조절하는 것이 누수 방지에 더
+                                효과적입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Washing -->
+            <section>
+                <div class="flex items-center gap-4 mb-6 border-b-2 border-green-500 pb-2">
+                    <span class="text-4xl">🚿</span>
+                    <h2 class="text-2xl font-bold">수명 연장 세척 & 보관법</h2>
+                </div>
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div class="p-4">
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-faucet text-green-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-sm">흐르는 물에 헹구기</h4>
+                        <p class="text-[10px] text-slate-400 mt-1">염분과 염소 제거</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-wind text-blue-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-sm">그늘에서 자연 건조</h4>
+                        <p class="text-[10px] text-slate-400 mt-1">직사광선 피하기</p>
+                    </div>
+                    <div class="p-4">
+                        <div class="w-16 h-16 bg-slate-200 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-box text-slate-600 text-2xl"></i>
+                        </div>
+                        <h4 class="font-bold text-sm">전용 케이스 보관</h4>
+                        <p class="text-[10px] text-slate-400 mt-1">기스 방지</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center pt-10 border-t border-slate-100">
+                <p class="text-slate-400 text-xs">Copyright © LUS (루스). All rights reserved.</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        function saveAsImage() {
+            const element = document.getElementById('capture-area');
+            const btn = document.querySelector('.save-btn');
+            btn.style.opacity = '0';
+            window.scrollTo(0, 0);
+            html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: "#ffffff"
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'lus_care_guide.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                btn.style.opacity = '1';
+            });
+        }
+    </script>
+</body>
+
+</html>

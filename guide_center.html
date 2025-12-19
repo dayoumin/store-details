@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUS 프리미엄 가이드 통합 센터</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab-active {
+            border-bottom: 4px solid #023E8A;
+            color: #023E8A;
+            background-color: white;
+        }
+
+        .save-btn-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .guide-content {
+            max-width: 860px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+            min-height: 100vh;
+        }
+
+        .highlight {
+            color: #023E8A;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Save Button -->
+    <div class="save-btn-container">
+        <button onclick="saveActiveTab()"
+            class="bg-slate-800 hover:bg-slate-700 text-white font-bold py-3 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-transform hover:scale-105 active:scale-95">
+            <i class="fas fa-camera"></i>
+            <span>현재 탭 이미지로 저장</span>
+        </button>
+    </div>
+
+    <div class="flex flex-col h-screen">
+        <!-- Tab Navigation -->
+        <nav class="flex bg-slate-200 border-b border-slate-300 sticky top-0 z-50">
+            <button onclick="switchTab('lens')" id="tab-lens"
+                class="flex-1 py-4 font-bold text-slate-600 transition-all tab-active flex items-center justify-center gap-2">
+                <i class="fas fa-microscope"></i> 기술 & 렌즈 가이드
+            </button>
+            <button onclick="switchTab('care')" id="tab-care"
+                class="flex-1 py-4 font-bold text-slate-600 transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-hand-holding-heart"></i> 관리 & 케어 가이드
+            </button>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="flex-1 overflow-auto bg-slate-100 p-4 md:p-8">
+            <div id="capture-area" class="guide-content">
+
+                <!-- Tab 1: Lens Guide Content -->
+                <div id="content-lens" class="tab-pane">
+                    <div class="bg-[#023E8A] text-white p-12 text-center text-sans">
+                        <div class="inline-block bg-[#FF9F1C] text-black px-4 py-1.5 rounded font-bold text-sm mb-4">LUS
+                            Premium Selection</div>
+                        <h1 class="text-4xl font-black leading-tight mb-4">LUS 와이드 수경<br>타입별 선택 가이드</h1>
+                        <p class="text-blue-100 text-lg">내 수영 환경에 딱 맞는 최고의 렌즈를 선택하세요</p>
+                    </div>
+                    <div class="p-10 space-y-16">
+                        <!-- Section 1: Technology -->
+                        <section>
+                            <div class="text-center mb-10">
+                                <h2 class="text-3xl font-bold mb-4">LUS만이 가진 <span class="text-blue-600">압도적 차이</span>
+                                </h2>
+                                <div class="w-16 h-1 bg-blue-600 mx-auto"></div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-8">
+                                <div class="bg-slate-50 p-6 rounded-2xl">
+                                    <div class="text-3xl mb-3">💎</div>
+                                    <h3 class="text-xl font-bold mb-2 text-slate-800">심리스 일체형 (No Gasket)</h3>
+                                    <p class="text-sm text-slate-500 leading-relaxed">렌즈와 실리콘 사이의 틈새를 없앴습니다. 곰팡이가 피지 않고
+                                        위생적이며, 연결 부위가 없어 미세 누수까지 완벽 차단합니다.</p>
+                                </div>
+                                <div class="bg-slate-50 p-6 rounded-2xl">
+                                    <div class="text-3xl mb-3">☀️</div>
+                                    <h3 class="text-xl font-bold mb-2 text-slate-800">UV 400 공인 성적서</h3>
+                                    <p class="text-sm text-slate-500 leading-relaxed">실내 조명부터 강렬한 태양광까지, 자외선 99.9% 차단
+                                        성적서로 증명된 렌즈만 사용하여 당신의 소중한 시력을 보호합니다.</p>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Section 2: Lens Comparison -->
+                        <section>
+                            <div class="text-center mb-10">
+                                <h2 class="text-3xl font-bold mb-4">나에게 맞는 <span class="text-blue-600">렌즈 찾기</span></h2>
+                                <p class="text-slate-400">환경에 따라 시야의 질이 달라집니다.</p>
+                            </div>
+                            <div class="space-y-6">
+                                <div class="flex gap-6 p-6 border border-slate-200 rounded-3xl">
+                                    <div
+                                        class="w-24 h-24 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-4xl shadow-sm">
+                                        🔆</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold mb-1">투명 (Clear) <span
+                                                class="text-sm font-normal text-slate-400 ml-2">#실내강습 #새벽수영</span></h3>
+                                        <p class="text-slate-600 mb-2">가장 밝고 선명한 시야를 확보합니다. 선생님의 동작을 정확히 봐야 하는 초보자나 정밀
+                                            교정이 필요한 분들께 강력 추천합니다.</p>
+                                        <span
+                                            class="inline-block bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold">밝기
+                                            최상</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-6 p-6 border-2 border-blue-500 rounded-3xl bg-blue-50/30">
+                                    <div
+                                        class="w-24 h-24 bg-white border border-slate-100 rounded-2xl flex items-center justify-center text-4xl shadow-sm">
+                                        😎</div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <h3 class="text-xl font-bold">미러 (Mirrored)</h3>
+                                            <span
+                                                class="bg-blue-600 text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Best</span>
+                                        </div>
+                                        <p class="text-slate-600 mb-2 text-sm">실내외 겸용 & 전력 피팅. 밖에서 눈이 보이지 않아 눈매가 부담스럽지
+                                            않고 스타일을 완성합니다.</p>
+                                        <span
+                                            class="inline-block bg-blue-600 text-white text-xs px-2 py-1 rounded font-bold">프라이버시
+                                            보호</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-6 p-6 border border-slate-600 rounded-3xl bg-slate-800 text-white">
+                                    <div
+                                        class="w-24 h-24 bg-slate-700 rounded-2xl flex items-center justify-center text-4xl shadow-sm">
+                                        🌊</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold mb-1">편광 (Polarized) <span
+                                                class="text-sm font-normal text-slate-400 ml-2">#야외수영 #바다 #호캉스</span>
+                                        </h3>
+                                        <p class="text-slate-300 mb-2 text-sm">고가의 렌즈 필터가 반사를 제거합니다. 눈부심을 줄여주어 야외에서 가장
+                                            깨끗한 시야를 제공합니다.</p>
+                                        <span
+                                            class="inline-block bg-slate-100 text-slate-800 text-xs px-2 py-1 rounded font-bold text-[10px]">눈부심
+                                            차단 최강</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <footer class="text-center">
+                            <p class="text-slate-400 text-xs">Copyright © LUS (루스). All rights reserved.</p>
+                        </footer>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Care Guide Content -->
+                <div id="content-care" class="tab-pane hidden">
+                    <div class="bg-slate-900 text-white p-12 text-center">
+                        <div class="inline-block bg-[#FF9F1C] text-black px-4 py-1.5 rounded font-bold text-sm mb-4">LUS
+                            프리미엄 가이드</div>
+                        <h1 class="text-4xl font-black leading-tight mb-4">잠깐! 불량이 아닙니다.<br>오해 타파 & 수명 연장 가이드</h1>
+                        <p class="text-slate-400 text-lg">루스 수경을 더 선명하게, 더 오래 사용하는 비법</p>
+                    </div>
+                    <div class="p-8 space-y-12">
+                        <section>
+                            <div class="flex items-center gap-4 mb-6 border-b-2 border-red-500 pb-2"><span
+                                    class="text-4xl">🌫️</span>
+                                <h2 class="text-2xl font-bold">안티포그의 진실</h2>
+                            </div>
+                            <div class="bg-red-50 p-6 rounded-2xl mb-6">
+                                <p class="text-lg leading-relaxed text-slate-700">안티포그는 <strong>소모품</strong>입니다. 손이나
+                                    수건으로 문지르면 즉시 파괴되니 주의하세요.</p>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="flex items-center gap-4 mb-6 border-b-2 border-blue-500 pb-2"><span
+                                    class="text-4xl">💧</span>
+                                <h2 class="text-2xl font-bold">물이 샌다면?</h2>
+                            </div>
+                            <p class="p-4 bg-slate-50 rounded-xl text-slate-600">머리카락이나 수모가 실리콘 안쪽으로 끼지 않았는지 확인하세요. 너무 꽉
+                                조이는 것보다 적당한 밀착이 중요합니다.</p>
+                        </section>
+                        <footer class="text-center pt-10 border-t border-slate-100">
+                            <p class="text-slate-400 text-xs">Copyright © LUS (루스). All rights reserved.</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function switchTab(type) {
+            document.getElementById('tab-lens').classList.remove('tab-active');
+            document.getElementById('tab-care').classList.remove('tab-active');
+            document.getElementById('content-lens').classList.add('hidden');
+            document.getElementById('content-care').classList.add('hidden');
+
+            if (type === 'lens') {
+                document.getElementById('tab-lens').classList.add('tab-active');
+                document.getElementById('content-lens').classList.remove('hidden');
+            } else {
+                document.getElementById('tab-care').classList.add('tab-active');
+                document.getElementById('content-care').classList.remove('hidden');
+            }
+        }
+
+        function saveActiveTab() {
+            const activePane = document.querySelector('.tab-pane:not(.hidden)');
+            const fileName = activePane.id === 'content-lens' ? 'lus_lens_guide_pro.png' : 'lus_care_guide_pro.png';
+            const captureArea = document.getElementById('capture-area');
+            const saveBtn = document.querySelector('.save-btn-container');
+
+            saveBtn.style.opacity = '0';
+            window.scrollTo(0, 0);
+
+            html2canvas(captureArea, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: "#ffffff",
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = fileName;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                saveBtn.style.opacity = '1';
+                alert('이미지 저장이 완료되었습니다!');
+            });
+        }
+    </script>
+</body>
+
+</html>
