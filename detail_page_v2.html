@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUS Premium Wide View Goggles | Exclusive Detail V2</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=Noto+Sans+KR:wght@100;300;400;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --lus-navy: #023E8A;
+      --lus-gold: #FF9F1C;
+      --lus-slate: #1e293b;
+      --lus-light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #ffffff;
+      color: var(--lus-slate);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-outfit {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Standard Width for Premium Feel */
+    .store-container {
+      max-width: 860px;
+      margin: 0 auto;
+      background-color: white;
+    }
+
+    /* Section Global Decor */
+    .section-block {
+      padding: 6rem 2.5rem;
+      position: relative;
+    }
+
+    .section-block.dark {
+      background-color: #0c121e;
+      color: white;
+    }
+
+    .section-block.soft {
+      background-color: #f1f5f9;
+    }
+
+    /* Realistic Typography */
+    .headline {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.08rem;
+      margin-bottom: 2rem;
+      word-break: keep-all;
+    }
+
+    .sub-headline {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: #64748b;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      letter-spacing: 0.02rem;
+    }
+
+    .dark .sub-headline {
+      color: #94a3b8;
+    }
+
+    .highlight-glow {
+      position: relative;
+      display: inline-block;
+      z-index: 1;
+    }
+
+    .highlight-glow::after {
+      content: '';
+      position: absolute;
+      bottom: 0.2rem;
+      left: -0.2rem;
+      right: -0.2rem;
+      height: 0.8rem;
+      background: rgba(56, 189, 248, 0.2);
+      z-index: -1;
+    }
+
+    /* Realistic Component: Premium Card */
+    .premium-card {
+      background: white;
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      transition: transform 0.4s ease;
+    }
+
+    .premium-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Realistic Image Placeholder */
+    .img-frame {
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 2.5rem 0;
+      background: #f1f5f9;
+      position: relative;
+      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.15);
+    }
+
+    .img-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .placeholder-content {
+      padding: 5rem 2rem;
+      text-align: center;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .placeholder-label {
+      font-family: 'Outfit';
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 1rem;
+    }
+
+    /* Badges */
+    .label-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Chart Overrides */
+    .chart-box {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Save Button */
+    .save-btn-container {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="save-btn-container">
+    <button onclick="saveAsImage()"
+      class="bg-black/80 backdrop-blur-md hover:bg-black text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all">
+      <i class="fas fa-camera-retro"></i>
+      <span class="font-outfit text-sm tracking-widest uppercase">Export Detail Image</span>
+    </button>
+  </div>
+
+  <div id="capture-area" class="store-container">
+
+    <!-- =========================================
+         SECTION 1: HERO (LUXURY ENTRANCE) - UPDATED
+    ========================================= -->
+    <section class="section-block dark overflow-hidden">
+      <div class="relative z-10 text-center">
+        <span class="label-badge bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/30">The New Series</span>
+        <h1 class="headline">
+          비싸도 믿고 선택하는<br>
+          <span class="text-white">이유가 있습니다.</span>
+        </h1>
+        <p
+          class="sub-headline max-w-2xl mx-auto text-white/90 text-xl md:text-2xl font-medium tracking-tight leading-relaxed">
+          네이버 쇼핑 수영 귀마개 1페이지,<br>
+          가장 높은 가격대에서도 꾸준히 선택받는 루스.<br>
+          <span class="text-[#38bdf8] font-bold">이제 그 신뢰를 루스 수경으로 경험하세요.</span>
+        </p>
+
+        <!-- 신뢰 증명 배너 (NEW) -->
+        <div class="flex items-center justify-center gap-8 mt-10 p-6 bg-gradient-to-r from-[#FF9F1C]/10 to-[#38bdf8]/10 rounded-2xl border border-white/10 max-w-3xl mx-auto">
+
+          <div class="flex items-center gap-3">
+            <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-3xl">🔊</span>
+            </div>
+            <div class="text-left">
+              <div class="text-[#FF9F1C] text-xs font-bold mb-1">귀 드라이기</div>
+              <div class="text-white font-bold text-sm">2025 판매 1위 · 리뷰 1위</div>
+            </div>
+          </div>
+
+          <div class="h-10 w-px bg-white/20"></div>
+
+          <div class="flex items-center gap-3">
+            <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
+              <span class="text-3xl">👂</span>
+            </div>
+            <div class="text-left">
+              <div class="text-[#38bdf8] text-xs font-bold mb-1">수영 귀마개</div>
+              <div class="text-white font-bold text-sm">네이버 최고가 제품군</div>
+            </div>
+          </div>
+
+          <div class="text-white/60 text-xs ml-4 text-left leading-relaxed">
+            → 검증된 신뢰를<br>수경으로 이어갑니다
+          </div>
+        </div>
+
+        <div class="img-frame">
+          <img src="assets/hero.png" alt="LUS Hero Goggles">
+        </div>
+      </div>
+
+      <!-- Subtle Background Decor -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full"></div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 2: PROBLEM (EMOTIONAL APPROACH)
+    ========================================= -->
+    <section class="section-block">
+      <div class="max-w-xl mx-auto text-center mb-16">
+        <h2 class="headline">
+          수영이 끝난 후,<br>
+          <span class="text-blue-600">속상하진 않으셨나요?</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 gap-10">
+        <div class="premium-card bg-slate-50 border-none shadow-none text-center">
+          <div class="text-5xl mb-6 font-light">01</div>
+          <h3 class="text-xl font-bold mb-4">지워지지 않는 팬더 자국</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">약속이 있는 날에도,<br>오후 늦게까지 남는 선명한 자국</p>
+        </div>
+        <div class="premium-card bg-slate-50 border-none shadow-none text-center">
+          <div class="text-5xl mb-6 font-light">02</div>
+          <h3 class="text-xl font-bold mb-4">참기 힘든 압박 통증</h3>
+          <p class="text-sm text-slate-500 leading-relaxed">눈알이 빠질 듯한 고통을<br>당연한 것으로 여겨왔던 시간들</p>
+        </div>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <div
+          class="bg-slate-50 rounded-[32px] overflow-hidden border border-slate-100 shadow-sm flex flex-col md:flex-row items-center">
+          <div class="w-full md:w-1/2 p-10">
+            <h4 class="text-xl font-bold mb-4">"반복되는 일상의 불편함"</h4>
+            <p class="text-sm text-slate-500 leading-relaxed">
+              수영 후 거울을 볼 때마다 마주하는 선명한 눌림 자국.
+              피부 탄력이 떨어지는 동양인의 눈가는 더 세심한 배려가 필요합니다.
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-red-500 font-bold text-xs">
+              <i class="fas fa-exclamation-circle"></i> <span>평균 2~3시간 지속되는 가스켓 자국</span>
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 relative group px-6 pb-6 md:pb-0 md:pr-10">
+            <div
+              class="rounded-2xl overflow-hidden shadow-xl grayscale group-hover:grayscale-0 transition-all duration-700">
+              <img src="assets/panda_asian.png" alt="Panda Eyes Asian Model" class="w-full h-auto">
+            </div>
+          </div>
+        </div>
+        <p class="text-center mt-8 text-slate-400 text-sm font-light italic">"당신의 소중한 눈가는 더 부드럽게 보호받아야 합니다."</p>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 3: THE PARADIGM SHIFT
+    ========================================= -->
+    <section class="section-block dark">
+      <div class="text-center mb-16">
+        <span class="label-badge bg-white/10 text-white">The Truth</span>
+        <h2 class="headline">기능에 매몰된<br><span class="text-blue-400">우리의 고정관념</span></h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto mb-16 text-center">
+        <h4 class="text-2xl font-bold text-white mb-6">왜 작은 렌즈에 고통받으시나요?</h4>
+        <p class="text-slate-300 text-lg leading-relaxed mb-6">
+          시중의 선수용 수경은 0.01초의 기록 단축을 위해 물의 저항(마찰력)을 최소화하도록 설계되었습니다. <br class="hidden md:block">
+          이를 위해 렌즈는 작아졌고, 눈 주위를 강하게 압박하는 구조를 가지게 되었죠.
+        </p>
+        <p class="text-blue-400 text-xl font-bold">
+          우리는 선수가 아닙니다. 마찰력을 낮추기 위한 '불편한 작은 렌즈'는<br class="hidden md:block">
+          일반인에게는 오히려 시야를 방해하고 고통만 줄 뿐입니다.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <!-- 1. Radar Chart Area -->
+        <div class="space-y-6">
+          <div class="chart-box h-[320px]">
+            <canvas id="radarChart"></canvas>
+          </div>
+          <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+            <h5 class="text-[#38bdf8] font-bold mb-3 flex items-center gap-2">
+              <i class="fas fa-chart-pie text-sm"></i>
+              <span>5차원 성능 분포 분석</span>
+            </h5>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              기록(속도)에만 치중된 선수용 수경과 달리, 실제 수영의 질을 결정하는 5가지 핵심 요소(편안함, 시야, 안전성, 가성비, 속도)를 분석했습니다. LUS는 <strong>사용자 체감
+                성능</strong>에서 압도적인 밸런스를 증명합니다.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. Technical Comparison Area -->
+        <div class="space-y-6">
+          <div class="bg-blue-500/10 rounded-[30px] p-6 border border-blue-500/20">
+            <img src="assets/lens_compare.png" alt="Racing vs LUS Wide View"
+              class="rounded-xl shadow-2xl border border-white/10 w-full">
+          </div>
+          <div class="bg-white/5 p-6 rounded-2xl border border-white/10">
+            <h5 class="text-[#38bdf8] font-bold mb-3 flex items-center gap-2">
+              <i class="fas fa-vector-square text-sm"></i>
+              <span>구조적 메커니즘 차이</span>
+            </h5>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              레이킹 수경의 작은 렌즈는 물의 저항을 줄이는 데 유리하지만, 좁은 시야와 극심한 압박을 동반합니다. LUS는 혁신적인 곡률 설계를 통해 마찰력은 최소화하면서도 180도 광각 시야를
+              구현했습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 4: KEY SUMMARY (THE 6 FEATURES)
+    ========================================= -->
+    <section class="section-block bg-white">
+      <div class="text-center mb-20">
+        <h2 class="headline font-outfit">Beyond the Limits</h2>
+        <p class="sub-headline">LUS가 추구하는 프리미엄의 가치, 6가지 혁신으로 담아냈습니다.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="group">
+          <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">🔭</div>
+          <h4 class="text-lg font-bold mb-2">180° 파노라마 뷰</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">고개 돌림 없이 한눈에 들어오는<br>압도적인 광각 시야</p>
+        </div>
+        <!-- Feature 2 -->
+        <div class="group">
+          <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">💎</div>
+          <h4 class="text-lg font-bold mb-2">심리스 일체형</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">단 하나의 틈새도 허용하지 않는<br>초정밀 융합 공법</p>
+        </div>
+        <!-- Feature 3 -->
+        <div class="group">
+          <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">🌙</div>
+          <h4 class="text-lg font-bold mb-2">고밀도 실리콘</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">마치 피부처럼 유연하게 흐르는<br>최상급 소재의 부드러움</p>
+        </div>
+        <!-- Feature 4 -->
+        <div class="group">
+          <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">🔘</div>
+          <h4 class="text-lg font-bold mb-2">스마트 버클</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">단 1초, 손끝 하나로 완성되는<br>가장 진화된 피팅 시스템</p>
+        </div>
+        <!-- Feature 5 -->
+        <div class="group">
+          <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">☀️</div>
+          <h4 class="text-lg font-bold mb-2">자외선 차단 99.9%</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">태양 아래에서도 호캉스에서도<br>눈을 지켜주는 고강도 코팅</p>
+        </div>
+        <!-- Feature 6 -->
+        <div class="group">
+          <div class="text-4xl mb-6 grayscale group-hover:grayscale-0 transition-all">🛠️</div>
+          <h4 class="text-lg font-bold mb-2">안티포그 지속력</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">뿌연 시야의 방해 없는 수영을 위한<br>프리미엄 코팅막 기술</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         POINT 01: PANORAMA VIEW
+    ========================================= -->
+    <section class="section-block soft">
+      <div class="text-center mb-16">
+        <span class="label-badge bg-blue-600/10 text-blue-600">Innovation 01</span>
+        <h2 class="headline">눈앞의 경계를<br><span class="highlight-glow">허물다.</span></h2>
+        <p class="sub-headline">180도 파노라마 뷰가 선사하는 광활한 수중 세계</p>
+      </div>
+
+      <div class="premium-card p-0 overflow-hidden mb-12">
+        <div class="grid md:grid-cols-2">
+          <div class="p-10 bg-slate-100 flex flex-col justify-center">
+            <span class="text-xs font-bold text-slate-400 mb-2 uppercase tracking-widest">Perspective Comparison</span>
+            <h4 class="text-2xl font-bold mb-4">답답한 터널 시야에서 벗어나세요</h4>
+            <p class="text-sm text-slate-500 leading-relaxed mb-6">일반 수경의 좁은 시야는 옆 레인의 사람을 인지하지 못해 충돌을 유발합니다. LUS는 렌즈
+              곡률을 극대화하여 고개를 돌리지 않고도 주변 상황을 완벽히 파악하게 합니다.</p>
+            <div class="flex items-center gap-4 text-xs font-bold text-blue-600 uppercase">
+              <span>Standard 70°</span>
+              <div class="h-1 flex-1 bg-slate-200 rounded-full overflow-hidden">
+                <div class="h-full bg-blue-600 w-[180%] animate-pulse"></div>
+              </div>
+              <span>LUS 180°</span>
+            </div>
+          </div>
+          <div class="overflow-hidden bg-[#0c121e] flex flex-col items-center justify-center p-8">
+            <h5 class="text-white font-outfit text-xs tracking-widest uppercase mb-4 opacity-50">FOV Analysis</h5>
+            <div class="w-full h-48">
+              <canvas id="fovChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         POINT 02: SEAMLESS AUTO-FIT
+    ========================================= -->
+    <section class="section-block">
+      <div class="flex flex-col md:flex-row gap-16 items-center">
+        <div class="flex-1 order-2 md:order-1">
+          <span class="label-badge bg-blue-600/10 text-blue-600">Innovation 02</span>
+          <h2 class="headline text-left">당신의 피부가<br>먼저 알아챌 <span class="highlight-glow">부드러움.</span></h2>
+          <p class="sub-headline text-left mb-10">가스켓 없는 심리스 공법과 고밀도 실리콘의 조화</p>
+
+          <div class="space-y-6">
+            <div class="flex gap-6 items-start">
+              <div
+                class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white font-outfit text-sm">
+                A</div>
+              <div>
+                <h4 class="font-bold text-lg mb-1 text-slate-800">나노 밀착 심리스 공법</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">렌즈와 실리콘을 하나로 융합하여 결합 부위의 투박함을 없앴습니다. 물 샐 틈 없는 것은 물론,
+                  세균 번식의 원인인 곰팡이 걱정까지 지웠습니다.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <div
+                class="w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center text-white font-outfit text-sm">
+                B</div>
+              <div>
+                <h4 class="font-bold text-lg mb-1 text-slate-800">Auto-Fit 실리콘 쿠션</h4>
+                <p class="text-sm text-slate-500 leading-relaxed">억지로 조이지 않아도 내 얼굴 안구 굴곡에 맞춰 성형되듯 밀착됩니다. 팬더 자국 없는 수영이
+                  현실이 됩니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1 order-1 md:order-2">
+          <div class="img-frame bg-white">
+            <img src="assets/silicone.png" alt="Silicone Macro Detail">
+          </div>
+          <div class="chart-box mt-8 bg-slate-50 border-slate-200">
+            <h5 class="text-slate-800 font-bold text-sm mb-4">안면 압박도 비교 (Pressure Index)</h5>
+            <div class="h-32">
+              <canvas id="comfortChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 6: THE COLLECTION (OPTIONS)
+    ========================================= -->
+    <section class="section-block bg-slate-50">
+      <div class="text-center mb-16">
+        <h2 class="headline">Select Your <span class="text-blue-600">Vision.</span></h2>
+        <p class="sub-headline">당신의 수영 환경에 가장 적합한 렌즈를 선택하세요.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Option 1 -->
+        <div class="premium-card hover:bg-white/80 border-t-4 border-slate-200">
+          <div class="text-4xl mb-6">🔆</div>
+          <h3 class="text-xl font-bold mb-4">투명 (Clear)</h3>
+          <p class="text-sm text-slate-500 leading-relaxed mb-8">"있는 그대로의 세상을 선명하게." 새벽 수영이나 조명이 어두운 실내 강습장에서 가장 깨끗한 시야를
+            제공합니다.</p>
+          <div
+            class="bg-slate-100 p-4 rounded-xl text-xs text-slate-400 font-bold uppercase tracking-widest text-center italic">
+            Indoor Training</div>
+        </div>
+        <!-- Option 2 -->
+        <div class="premium-card hover:bg-white/80 border-t-4 border-blue-500">
+          <div class="text-4xl mb-6">😎</div>
+          <h3 class="text-xl font-bold mb-4">미러 (Mirrored)</h3>
+          <p class="text-sm text-slate-500 leading-relaxed mb-8">"스타일과 프라이버시를 동시에." 밖에서 눈이 보이지 않아 부담 없고, 실내외 어디서나 세련된 룩을
+            완성합니다.</p>
+          <div
+            class="bg-blue-600 p-4 rounded-xl text-xs text-white font-bold uppercase tracking-widest text-center italic">
+            Versatile Style</div>
+        </div>
+        <!-- Option 3 -->
+        <div class="premium-card hover:bg-white/80 border-t-4 border-slate-900">
+          <div class="text-4xl mb-6">🌊</div>
+          <h3 class="text-xl font-bold mb-4">편광 (Polarized)</h3>
+          <p class="text-sm text-slate-500 leading-relaxed mb-8">"태양 아래 가장 시원한 시야." 바다 수영과 호캉스 필수품. 수면의 번뜩이는 반사광을 완벽히
+            차단합니다.</p>
+          <div
+            class="bg-slate-900 p-4 rounded-xl text-xs text-white font-bold uppercase tracking-widest text-center italic">
+            Outdoor / Travel</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 7: ADVANCED LENS TECHNOLOGY
+         목표: 최첨단 렌즈 기술력으로 구매 확신 제공
+    ========================================= -->
+    <section class="section-block bg-white">
+      <div class="flex flex-col md:flex-row gap-12 items-center">
+        <div class="flex-1">
+          <span class="label-badge bg-blue-600/10 text-blue-600">Pure Optics Tech</span>
+          <h2 class="headline text-left">세상을 보는<br><span class="highlight-glow">맑고 선명한 기준.</span></h2>
+          <p class="text-slate-600 leading-relaxed mb-10 text-lg">
+            단순히 어둡게 만드는 렌즈가 아닙니다. LUS의 하이테크 렌즈는 <strong>UVA 및 UVB 광선으로부터 눈을 효과적으로 보호</strong>하며, 실제 색상을 복원하고 누부심과 산란광을
+            완벽히 제거합니다.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-sun"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">4-Way UV Protection</h4>
+                <p class="text-sm text-slate-500">UVA/UVB를 99.9% 차단하여 야외 및 야외 수영장에서도 안구 손상을 방지합니다.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-eye"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">True Color Restoration</h4>
+                <p class="text-sm text-slate-500">왜곡 없는 색상 재현으로 수중에서도 현실감 넘치는 시야를 제공합니다.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-bolt"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-800">Anti-Glare System</h4>
+                <p class="text-sm text-slate-500">수면의 반사광과 불필요한 산란광을 제거하여 실내 및 실외 훈련에 최적화되었습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="img-frame shadow-2xl">
+            <img src="assets/uv_tech.png" alt="LUS Multi-Layer Lens Tech">
+          </div>
+        </div>
+      </div>
+
+      <!-- Verification Section Integrated -->
+      <div class="mt-20 pt-20 border-t border-slate-100 text-center">
+        <h3 class="text-xl font-bold text-slate-800 mb-10">공인 성적서로 증명된 품질</h3>
+        <div class="bg-slate-50 p-10 rounded-[40px] border border-slate-200 shadow-inner">
+          <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-300">
+            <div class="py-6 md:px-6">
+              <div class="text-slate-400 text-xs font-bold mb-2 uppercase tracking-widest">UV 400 Protection</div>
+              <div class="text-blue-600 font-extrabold text-4xl mb-1">99.9%</div>
+              <div class="text-[10px] text-green-600 font-bold bg-green-50 inline-block px-2 py-1 rounded">BLOCK PASS
+              </div>
+            </div>
+            <div class="py-6 md:px-6">
+              <div class="text-slate-400 text-xs font-bold mb-2 uppercase tracking-widest">Safety Test</div>
+              <div class="text-blue-600 font-extrabold text-4xl mb-1">불검출</div>
+              <div class="text-[10px] text-green-600 font-bold bg-green-50 inline-block px-2 py-1 rounded">NON-TOXIC
+                PASS</div>
+            </div>
+            <div class="py-6 md:px-6">
+              <div class="text-slate-400 text-xs font-bold mb-2 uppercase tracking-widest">Material Quality</div>
+              <div class="text-blue-600 font-extrabold text-4xl mb-1">최고등급</div>
+              <div class="text-[10px] text-green-600 font-bold bg-green-50 inline-block px-2 py-1 rounded">SILICONE PASS
+              </div>
+            </div>
+          </div>
+          <div class="mt-10 text-[11px] text-slate-400">
+            * KCL(한국건설생활환경시험연구원) 및 주요 공인기관을 통한 정식 성적 확인 완료
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 9: COMPONENT
+         목표: 구성품 안내 (혜택 강조)
+    ========================================= -->
+    <section class="section-block text-center">
+      <h2 class="headline text-xl">이 모든 것을 담았습니다.</h2>
+      <div class="bg-gray-800 text-white p-6 rounded-xl mx-4 mb-6">
+        <h3 class="text-lg font-bold text-[#FF9F1C] mb-2">🎁 런칭 기념 특별 구성</h3>
+        <ul class="text-sm space-y-2 text-gray-200">
+          <li>1. 루스 수영 수경</li>
+          <li>2. 스크래치 방지 <strong>하드 케이스 (무료 증정)</strong></li>
+          <li>3. 렌즈 보호 필름 (부착됨)</li>
+          <li>4. 사용 설명서</li>
+        </ul>
+      </div>
+      <div class="img-frame">
+        <img src="assets/package.png" alt="LUS Package">
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 10: PRODUCT SPECS TABLE
+         목표: 최종 정보 확인
+    ========================================= -->
+    <section class="section-block">
+      <h2 class="headline text-2xl mb-6">제품 상세 스펙</h2>
+      <table class="spec-table w-full text-sm">
+        <tbody>
+          <tr>
+            <th>제품명</th>
+            <td>LUS 와이드 뷰 프리미엄 수경</td>
+          </tr>
+          <tr>
+            <th>브랜드</th>
+            <td>LUS (루스)</td>
+          </tr>
+          <tr>
+            <th>색상/옵션</th>
+            <td>투명 / 미러 / 편광 (택1)</td>
+          </tr>
+          <tr>
+            <th>소재</th>
+            <td>렌즈(PC), 프레임/스트랩(Silicone)</td>
+          </tr>
+          <tr>
+            <th>사이즈</th>
+            <td>Free (성인 남녀 공용 / 밴드조절)</td>
+          </tr>
+          <tr>
+            <th>제조국</th>
+            <td>China (OEM) / Designed by Korea</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 11: CARE & TROUBLESHOOTING (FROM INDEX.HTML)
+         목표: 불필요한 CS를 줄이고 고객 만족도 상승
+    ========================================= -->
+    <section class="section-block accent">
+      <div class="text-center"><span class="check-point" style="background: #FF9F1C;">MUST READ</span></div>
+      <h2 class="headline">
+        잠깐! 불량이 아닙니다.<br>
+        <span class="highlight-text" style="color: #fff;">오해 타파 & 수명 연장 가이드</span>
+      </h2>
+
+      <div class="space-y-6 text-left max-w-2xl mx-auto text-slate-800">
+        <!-- 1. Anti-fog -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-8 border-red-500">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-3">🌫️</span>
+            <h3 class="text-2xl font-bold">안티포그(김서림 방지)의 진실</h3>
+          </div>
+          <p class="text-base leading-relaxed mb-6">
+            안티포그는 코팅 특성상 <strong>소모품</strong>입니다. 수영장 물의 염소, 열기, 마찰로 인해 서서히 사라지는 것이 정상입니다.
+          </p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-red-50 p-4 rounded-lg text-center">
+              <p class="text-sm font-bold text-red-600">절대 금지 🚫</p>
+              <p class="text-xs text-gray-500">손/수건으로 렌즈 안쪽 문지르기</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-lg text-center">
+              <p class="text-sm font-bold text-blue-600">해결 방법 💡</p>
+              <p class="text-xs text-gray-500">김이 서리면 '안티포그액' 사용</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Leak proof -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-8 border-blue-500">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-3">💧</span>
+            <h3 class="text-2xl font-bold">물이 샌다면? 체크리스트</h3>
+          </div>
+          <ul class="text-base space-y-3">
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
+              <span>머리카락, 수모 끝이 패킹에 끼지 않았나요?</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <i class="fas fa-check-circle text-blue-500 mt-1"></i>
+              <span>코받침 조절로 본인의 얼굴형에 맞게 맞췄나요?</span>
+            </li>
+          </ul>
+          <p class="text-sm text-blue-600 mt-4 font-bold">※ 너무 꽉 조이는 것보다 적당한 밀착이 누수 방지에 더 효과적입니다.</p>
+        </div>
+
+        <!-- 3. Washing -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-8 border-green-500">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-3">🚿</span>
+            <h3 class="text-2xl font-bold">수명 연장 세척법</h3>
+          </div>
+          <div class="flex justify-around text-center py-4">
+            <div>
+              <div class="text-3xl">✅</div>
+              <div class="text-xs mt-2 font-bold">흐르는 물에 헹구기</div>
+            </div>
+            <div>
+              <div class="text-3xl">✅</div>
+              <div class="text-xs mt-2 font-bold">그늘에서 자연 건조</div>
+            </div>
+            <div>
+              <div class="text-3xl">✅</div>
+              <div class="text-xs mt-2 font-bold">전용 케이스 보관</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SECTION 12: FAQ
+         목표: 구매 직전 망설임(CS) 제거
+    ========================================= -->
+    <section class="section-block blue-light">
+      <h2 class="headline text-2xl mb-8 text-center">자주 묻는 질문 (FAQ)</h2>
+      <div class="space-y-4">
+        <div class="bg-white p-5 rounded-lg shadow-sm">
+          <p class="font-bold text-[#023E8A] mb-2">Q. 안티포그(김서림 방지)는 영구적인가요?</p>
+          <p class="text-sm text-gray-600">A. 영구적인 코팅은 전 세계 어디에도 없습니다. 하지만 본 제품은 이중 코팅으로 타사 대비 2배 이상 오래 지속됩니다.
+            사용 후 렌즈 안쪽을 헹궈서 그늘에 말려주시면 수명이 길어집니다.</p>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow-sm">
+          <p class="font-bold text-[#023E8A] mb-2">Q. 얼굴이 작은 여성이나 아이도 맞나요?</p>
+          <p class="text-sm text-gray-600">A. 네, 3D 실리콘 가스켓이 다양한 얼굴형에 맞게 흡착되며, 스트랩 길이를 조절할 수 있어 초등 고학년부터 성인
+            남성까지 모두 착용 가능합니다.</p>
+        </div>
+        <div class="bg-white p-5 rounded-lg shadow-sm">
+          <p class="font-bold text-[#023E8A] mb-2">Q. 도수 렌즈인가요?</p>
+          <p class="text-sm text-gray-600">A. 아니요, 본 제품은 무도수 제품입니다. 렌즈가 크고 시야가 맑아 시력이 조금 나쁘신 분들도 물속에서는 굴절 현상으로
+            인해 잘 보이시는 편입니다.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================
+         SECTION 12: SHIPPING & CS (FOOTER)
+         목표: 배송 신뢰 및 마무리
+    ========================================= -->
+    <section class="section-block dark text-center">
+      <h3 class="text-xl font-bold text-white mb-4">배송 및 교환/반품 안내</h3>
+
+      <div class="grid grid-cols-2 gap-4 mb-8 text-left max-w-md mx-auto">
+        <div class="bg-white/10 p-4 rounded text-gray-300 text-sm">
+          <strong class="text-[#FF9F1C] block mb-1">🚚 배송 안내</strong>
+          오후 2시 이전 주문 시<br>
+          당일 발송 (CJ대한통운)<br>
+          평균 1~2일 내 도착
+        </div>
+        <div class="bg-white/10 p-4 rounded text-gray-300 text-sm">
+          <strong class="text-[#FF9F1C] block mb-1">📞 고객 센터</strong>
+          네이버 톡톡 문의<br>
+          평일 10:00 ~ 17:00<br>
+          (주말/공휴일 휴무)
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500 mt-8">
+        본 상세페이지의 모든 콘텐츠(이미지, 텍스트)는 저작권법의 보호를 받으며,<br>
+        무단 도용 및 복제 시 민형사상 책임을 질 수 있습니다.<br>
+        Copyright © LUS (루스). All rights reserved.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- CHART LOGIC -->
+  <script>
+    function saveAsImage() {
+      const element = document.getElementById('capture-area');
+      const btn = document.querySelector('.save-btn-container');
+
+      // 저장 중 버튼 숨김 (선택 사항)
+      btn.style.opacity = '0';
+
+      window.scrollTo(0, 0);
+
+      html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+        logging: false,
+        width: element.offsetWidth,
+        windowWidth: element.scrollWidth
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'premium_goggles_detail_v2.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        btn.style.opacity = '1';
+        alert('이미지 저장이 완료되었습니다!');
+      });
+    }
+
+    Chart.defaults.font.family = "'Montserrat', 'Noto Sans KR', sans-serif";
+    Chart.defaults.color = '#64748b';
+
+    // 1. Radar Chart (Comparison)
+    new Chart(document.getElementById('radarChart'), {
+      type: 'radar',
+      data: {
+        labels: ['편안함(Comfort)', '시야(View)', '안전성', '가성비', '속도(Record)'],
+        datasets: [{
+          label: '와이드 뷰',
+          data: [10, 10, 9, 9, 6],
+          backgroundColor: 'rgba(0, 180, 216, 0.5)',
+          borderColor: '#00B4D8',
+          borderWidth: 2,
+          pointBackgroundColor: '#00B4D8'
+        }, {
+          label: '일반 선수용',
+          data: [3, 4, 5, 6, 10],
+          backgroundColor: 'rgba(239, 68, 68, 0.2)',
+          borderColor: '#ef4444',
+          borderWidth: 2,
+          borderDash: [5, 5],
+          pointBackgroundColor: '#ef4444'
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          r: {
+            angleLines: { color: '#e2e8f0' },
+            grid: { color: '#e2e8f0' },
+            pointLabels: { font: { size: 11, weight: 'bold' }, color: '#94a3b8' },
+            suggestedMin: 0, suggestedMax: 10, ticks: { display: false }
+          }
+        },
+        plugins: { legend: { position: 'bottom', labels: { usePointStyle: true } } }
+      }
+    });
+
+    // 2. FOV Chart (Bar)
+    new Chart(document.getElementById('fovChart'), {
+      type: 'bar',
+      data: {
+        labels: ['일반 수경 (Tunnel)', '와이드 뷰 (Wide)'],
+        datasets: [{
+          label: '시야각 (도)',
+          data: [70, 180],
+          backgroundColor: ['#94a3b8', '#00B4D8'],
+          borderRadius: 8,
+          barThickness: 40
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true, max: 200, title: { display: true, text: '시야각(°)' } }, x: { grid: { display: false } } }
+      }
+    });
+
+    // 3. Comfort Chart (Doughnut - Inverse Logic for Pressure)
+    new Chart(document.getElementById('comfortChart'), {
+      type: 'bar',
+      data: {
+        labels: ['일반 수경 (압박 심함)', '와이드 뷰 (편안함)'],
+        datasets: [{
+          label: '눈 주변 압력 지수 (낮을수록 좋음)',
+          data: [90, 20],
+          backgroundColor: ['#ef4444', '#00B4D8'],
+          borderRadius: 50,
+          barThickness: 30
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { x: { display: false, max: 100 }, y: { grid: { display: false } } }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

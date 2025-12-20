@@ -23,16 +23,51 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .sidebar {
+      width: 200px;
+      background: rgba(15, 23, 42, 0.95);
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+
+    .category-btn {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      text-align: left;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: all 0.3s;
+      border-left: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .category-btn:hover {
+      background: rgba(56, 189, 248, 0.1);
+      color: #f1f5f9;
+    }
+
+    .category-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border-left-color: #38bdf8;
+    }
+
     .nav-tab {
       position: relative;
-      padding: 1rem 1.5rem;
+      padding: 0.75rem 1.25rem;
       font-weight: 600;
       color: #94a3b8;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       z-index: 1;
+      font-size: 0.8rem;
+      text-transform: uppercase;
     }
 
     .nav-tab:hover {
@@ -67,6 +102,7 @@
       height: calc(100vh - 64px);
       background: #1e293b;
       position: relative;
+      flex: 1;
     }
 
     iframe {
@@ -79,7 +115,6 @@
       box-shadow: 0 -20px 50px rgba(0, 0, 0, 0.5);
     }
 
-    /* 럭셔리 로딩 표시기 */
     .status-dot {
       width: 8px;
       height: 8px;
@@ -105,36 +140,69 @@
         opacity: 1;
       }
     }
+
+    .sub-nav-container {
+      display: none;
+    }
+
+    .sub-nav-container.active {
+      display: flex;
+    }
   </style>
 </head>
 
 <body>
 
   <div class="flex flex-col h-screen">
-    <!-- Main Hub Navigation -->
+    <!-- Top Navigation -->
     <nav class="glass-nav flex items-center px-8 z-50 h-16">
       <div class="mr-12">
         <span class="glow-logo font-extrabold tracking-tighter text-2xl uppercase">LUS Control</span>
       </div>
 
-      <div class="flex h-full gap-2 text-sm uppercase">
-        <button onclick="switchView('detail', this)" class="nav-tab active">
-          <i class="fas fa-desktop text-base"></i> <span>Detail Pro</span>
+      <!-- 상세페이지 Sub-Nav -->
+      <div id="detail-subnav" class="sub-nav-container active h-full gap-2">
+        <button onclick="switchView('detail_v2', this)" class="nav-tab active">
+          <i class="fas fa-star"></i> <span>V2 New</span>
+        </button>
+        <button onclick="switchView('detail', this)" class="nav-tab">
+          <i class="fas fa-desktop"></i> <span>Pro</span>
         </button>
         <button onclick="switchView('detail_v1', this)" class="nav-tab">
-          <i class="fas fa-history text-base"></i> <span>Detail V1</span>
+          <i class="fas fa-history"></i> <span>V1</span>
         </button>
-        <button onclick="switchView('lens', this)" class="nav-tab">
-          <i class="fas fa-shield-halved text-base"></i> <span>Lens Guide</span>
+      </div>
+
+      <!-- 제품 정보 Sub-Nav -->
+      <div id="product-subnav" class="sub-nav-container h-full gap-2">
+        <button onclick="switchView('lens', this)" class="nav-tab active">
+          <i class="fas fa-eye"></i> <span>렌즈 기술</span>
         </button>
-        <button onclick="switchView('care', this)" class="nav-tab">
-          <i class="fas fa-wand-magic-sparkles text-base"></i> <span>Care Setup</span>
+        <button onclick="switchView('gasket_free', this)" class="nav-tab">
+          <i class="fas fa-shield-alt"></i> <span>가스켓 프리</span>
+        </button>
+        <button onclick="switchView('uv400', this)" class="nav-tab">
+          <i class="fas fa-sun"></i> <span>UV400</span>
+        </button>
+      </div>
+
+      <!-- 가이드 Sub-Nav -->
+      <div id="guide-subnav" class="sub-nav-container h-full gap-2">
+        <button onclick="switchView('care', this)" class="nav-tab active">
+          <i class="fas fa-hand-sparkles"></i> <span>관리 방법</span>
+        </button>
+      </div>
+
+      <!-- Temp Sub-Nav -->
+      <div id="temp-subnav" class="sub-nav-container h-full gap-2">
+        <button onclick="switchView('gasket_research', this)" class="nav-tab active">
+          <i class="fas fa-flask"></i> <span>가스켓 조사</span>
         </button>
         <button onclick="switchView('center', this)" class="nav-tab">
-          <i class="fas fa-layer-group text-base"></i> <span>Integration</span>
+          <i class="fas fa-layer-group"></i> <span>Integration</span>
         </button>
         <button onclick="switchView('research', this)" class="nav-tab">
-          <i class="fas fa-microscope text-base"></i> <span>Research Hub</span>
+          <i class="fas fa-microscope"></i> <span>Research</span>
         </button>
       </div>
 
@@ -142,26 +210,65 @@
         <div class="flex items-center gap-2 px-4 py-2 bg-slate-800/50 rounded-full border border-slate-700/50">
           <div class="status-dot"></div>
           <span id="file-path" class="text-slate-400 text-[10px] font-mono tracking-widest uppercase">READY:
-            detail_page.html</span>
-        </div>
-        <div class="flex gap-3">
-          <button
-            class="w-8 h-8 flex items-center justify-center rounded-full bg-slate-800 text-slate-400 hover:text-white transition">
-            <i class="fas fa-cog"></i>
-          </button>
+            detail_page_v2.html</span>
         </div>
       </div>
     </nav>
 
-    <!-- Viewer Area -->
-    <main class="viewer-container p-4 pb-0 bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
-      <iframe id="viewer" src="detail_page.html"></iframe>
-    </main>
+    <div class="flex" style="height: calc(100vh - 64px);">
+      <!-- Left Sidebar -->
+      <aside class="sidebar">
+        <button onclick="switchCategory('detail')" class="category-btn active" id="cat-detail">
+          <i class="fas fa-image"></i>
+          <span>상세페이지</span>
+        </button>
+        <button onclick="switchCategory('product')" class="category-btn" id="cat-product">
+          <i class="fas fa-star"></i>
+          <span>제품 정보</span>
+        </button>
+        <button onclick="switchCategory('guide')" class="category-btn" id="cat-guide">
+          <i class="fas fa-book-open"></i>
+          <span>가이드</span>
+        </button>
+        <button onclick="switchCategory('temp')" class="category-btn" id="cat-temp">
+          <i class="fas fa-archive"></i>
+          <span>Temp</span>
+        </button>
+      </aside>
+
+      <!-- Viewer Area -->
+      <main class="viewer-container p-4 pb-0 bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
+        <iframe id="viewer" src="detail_page_v2.html"></iframe>
+      </main>
+    </div>
   </div>
 
   <script>
+    let currentCategory = 'detail';
+
+    function switchCategory(category) {
+      // Update category buttons
+      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('cat-' + category).classList.add('active');
+
+      // Hide all sub-navs
+      document.querySelectorAll('.sub-nav-container').forEach(nav => nav.classList.remove('active'));
+
+      // Show selected sub-nav
+      document.getElementById(category + '-subnav').classList.add('active');
+
+      currentCategory = category;
+      localStorage.setItem('lus_active_category', category);
+
+      // Click first tab in the new category
+      const firstTab = document.querySelector('#' + category + '-subnav .nav-tab');
+      if (firstTab) firstTab.click();
+    }
+
     function switchView(type, el) {
-      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+      // Only update tabs within current sub-nav
+      const parentNav = el.closest('.sub-nav-container');
+      parentNav.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
       el.classList.add('active');
 
       const viewer = document.getElementById('viewer');
@@ -169,21 +276,38 @@
 
       let targetFile = '';
       switch (type) {
+        // 상세페이지
+        case 'detail_v2': targetFile = 'detail_page_v2.html'; break;
         case 'detail': targetFile = 'detail_page.html'; break;
         case 'detail_v1': targetFile = 'detail_v1.html'; break;
+        // 제품 정보
         case 'lens': targetFile = 'lens_guide.html'; break;
+        case 'gasket_free': targetFile = 'product_gasket_free.html'; break;
+        case 'uv400': targetFile = 'product_uv400.html'; break;
+        // 가이드
         case 'care': targetFile = 'care_guide.html'; break;
+        // Temp
+        case 'gasket_research': targetFile = 'research_gasket_free.html'; break;
         case 'center': targetFile = 'guide_center.html'; break;
         case 'research': targetFile = 'research_center.html'; break;
       }
 
       viewer.src = targetFile;
       pathDisplay.innerText = 'SYNCED: ' + targetFile;
-      localStorage.setItem('lus_active_tab_pro', type);
+      localStorage.setItem('lus_active_tab', type);
     }
 
     window.onload = function () {
-      const savedTab = localStorage.getItem('lus_active_tab_pro') || 'detail';
+      const savedCategory = localStorage.getItem('lus_active_category') || 'detail';
+      const savedTab = localStorage.getItem('lus_active_tab') || 'detail_v2';
+
+      // Restore category
+      const categoryBtn = document.getElementById('cat-' + savedCategory);
+      if (categoryBtn) {
+        switchCategory(savedCategory);
+      }
+
+      // Restore tab
       const tabBtn = document.querySelector(`button[onclick*="'${savedTab}'"]`);
       if (tabBtn) tabBtn.click();
     };
