@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가스켓 프리 디자인 조사 결과 | LUS Research</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #e2e8f0;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .research-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1.5rem;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: all 0.3s;
+    }
+
+    .research-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-success {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-warning {
+      background: rgba(251, 146, 60, 0.2);
+      color: #fb923c;
+      border: 1px solid rgba(251, 146, 60, 0.3);
+    }
+
+    .badge-danger {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-info {
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(129, 140, 248, 0.1) 100%);
+      border-left: 4px solid #38bdf8;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .product-card:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: #38bdf8;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .meta-info {
+      color: #94a3b8;
+      font-size: 0.875rem;
+      margin-bottom: 3rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+    }
+
+    ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: #38bdf8;
+      font-weight: bold;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comparison-table th {
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>가스켓 프리 디자인 조사 결과</h1>
+    <div class="meta-info">
+      <i class="fas fa-calendar-alt"></i> 조사 일자: 2025-12-20 |
+      <i class="fas fa-bullseye"></i> 목적: 마케팅 타당성 검증
+    </div>
+
+    <!-- 개요 -->
+    <div class="research-card">
+      <div class="section-title">
+        <i class="fas fa-clipboard-check"></i>
+        조사 개요
+      </div>
+      <p class="text-lg">
+        수영 고글에서 <strong>"가스켓 없는 디자인"</strong>의 실제 장단점을 검증하고,
+        루스 수경의 마케팅 메시지로 활용 가능한지 확인하는 것이 목적입니다.
+      </p>
+    </div>
+
+    <!-- 비교 -->
+    <div class="research-card">
+      <div class="section-title">
+        <i class="fas fa-balance-scale"></i>
+        가스켓 프리 vs 전통 가스켓
+      </div>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>구분</th>
+            <th>전통 가스켓</th>
+            <th>가스켓 프리</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>밀봉 방식</strong></td>
+            <td>고무/실리콘 가스켓 + 흡착력</td>
+            <td>압력만으로 밀봉</td>
+          </tr>
+          <tr>
+            <td><strong>디자인</strong></td>
+            <td>부드러운 쿠션형</td>
+            <td>극저프로파일 (Low-profile)</td>
+          </tr>
+          <tr>
+            <td><strong>역사</strong></td>
+            <td>일반적인 수경 디자인</td>
+            <td>1970년대 스웨덴 Malmsten AB 개발</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 검증된 장점 -->
+    <div class="research-card">
+      <div class="section-title">
+        <i class="fas fa-check-circle"></i>
+        검증된 장점
+      </div>
+
+      <!-- 장점 1 -->
+      <div class="highlight-box">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-xl font-bold text-white">1. 팬더 자국 방지 (Raccoon Eyes Prevention)</h3>
+          <span class="badge badge-success">검증도: 높음</span>
+        </div>
+        <ul class="text-slate-300">
+          <li>눈 소켓 주위 압력이 적어 민감한 피부 보호</li>
+          <li>수영 후 붉은 고리 자국이나 압박 자국이 덜 남음</li>
+          <li>전통 고글은 너무 꽉 조이면 몇 시간 지속되는 자국 발생</li>
+        </ul>
+        <div class="mt-4 p-4 bg-green-500/10 rounded-lg border border-green-500/20">
+          <p class="text-sm text-green-400">
+            <i class="fas fa-quote-left"></i>
+            <strong>마케팅 메시지:</strong> "가스켓 없는 디자인으로 수영 후에도 자국 걱정 없이"
+          </p>
+        </div>
+      </div>
+
+      <!-- 장점 2 -->
+      <div class="highlight-box">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-xl font-bold text-white">2. 더 넓은 시야각 (Wider FOV)</h3>
+          <span class="badge badge-success">검증도: 높음</span>
+        </div>
+        <ul class="text-slate-300">
+          <li>가스켓이 없어 시야를 가리는 요소 제거</li>
+          <li>더 넓은 시야각과 뛰어난 주변 시야 제공</li>
+          <li>경쟁 수영자들이 선호하는 이유 중 하나</li>
+        </ul>
+        <div class="mt-4 p-4 bg-green-500/10 rounded-lg border border-green-500/20">
+          <p class="text-sm text-green-400">
+            <i class="fas fa-quote-left"></i>
+            <strong>마케팅 메시지:</strong> "가스켓이 없어 더 넓어진 180° 파노라마 뷰"
+          </p>
+        </div>
+      </div>
+
+      <!-- 장점 3 -->
+      <div class="highlight-box">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-xl font-bold text-white">3. 유선형 디자인 (Streamlined)</h3>
+          <span class="badge badge-success">검증도: 높음</span>
+        </div>
+        <ul class="text-slate-300">
+          <li>항력(drag) 감소로 수력학적 프로파일 향상</li>
+          <li>경쟁 수영에서 실제 성능 향상 효과</li>
+          <li>Speedo, Arena, TYR 등 주요 브랜드의 레이싱 라인에 채택</li>
+        </ul>
+        <div class="mt-4 p-4 bg-green-500/10 rounded-lg border border-green-500/20">
+          <p class="text-sm text-green-400">
+            <i class="fas fa-quote-left"></i>
+            <strong>마케팅 메시지:</strong> "물의 저항을 최소화하는 유선형 디자인"
+          </p>
+        </div>
+      </div>
+
+      <!-- 장점 4 -->
+      <div class="highlight-box">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-xl font-bold text-white">4. 세균 번식 감소</h3>
+          <span class="badge badge-warning">검증도: 중간 (이론적)</span>
+        </div>
+        <div class="mb-3">
+          <p class="font-semibold text-red-400 mb-2">전통 가스켓의 문제점:</p>
+          <ul class="text-slate-300">
+            <li>주름(folds)에 물이 고여 세균/곰팡이 번식</li>
+            <li>젖은 상태로 밀폐 보관 시 박테리아 성장 촉진</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-green-400 mb-2">가스켓 프리의 장점:</p>
+          <ul class="text-slate-300">
+            <li>주름이나 틈새가 적어 세균 번식 공간 감소</li>
+            <li>구조가 단순하여 세척과 건조 용이</li>
+          </ul>
+        </div>
+        <div class="mt-4 p-4 bg-blue-500/10 rounded-lg border border-blue-500/20">
+          <p class="text-sm text-blue-400">
+            <i class="fas fa-quote-left"></i>
+            <strong>마케팅 메시지:</strong> "틈새 없는 심플한 구조로 위생적인 관리"
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 약점 및 보완 -->
+    <div class="research-card">
+      <div class="section-title">
+        <i class="fas fa-exclamation-triangle"></i>
+        약점 및 보완 전략
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- 약점 1 -->
+        <div class="p-4 bg-red-500/10 rounded-lg border border-red-500/20">
+          <h3 class="text-lg font-bold text-red-400 mb-3">
+            <i class="fas fa-times-circle"></i> 누수 방지 성능
+          </h3>
+          <p class="text-sm text-slate-300 mb-3">전통 가스켓만큼 완벽한 밀봉 제공 어려움. 흡착력 없이 압력만 의존.</p>
+          <div class="p-3 bg-green-500/10 rounded border border-green-500/20">
+            <p class="text-xs text-green-400 font-semibold mb-1">✅ 해결책:</p>
+            <p class="text-xs text-slate-300">
+              <strong>"인체공학 3D 설계"</strong>와 결합하여 약점 보완
+              <br>"가스켓 없어도 얼굴 굴곡에 완벽 밀착"
+            </p>
+          </div>
+        </div>
+
+        <!-- 약점 2 -->
+        <div class="p-4 bg-red-500/10 rounded-lg border border-red-500/20">
+          <h3 class="text-lg font-bold text-red-400 mb-3">
+            <i class="fas fa-times-circle"></i> 착용감 (개인차)
+          </h3>
+          <p class="text-sm text-slate-300 mb-3">단단한 플라스틱이 광대뼈를 아프게 할 수 있음.</p>
+          <div class="p-3 bg-green-500/10 rounded border border-green-500/20">
+            <p class="text-xs text-green-400 font-semibold mb-1">✅ 해결책:</p>
+            <p class="text-xs text-slate-300">
+              <strong>"고밀도 실리콘 소재"</strong> 사용으로 부드러운 착용감 제공
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 실제 제품 사례 -->
+    <div class="research-card">
+      <div class="section-title">
+        <i class="fas fa-shopping-cart"></i>
+        실제 제품 사례
+      </div>
+
+      <h3 class="text-lg font-semibold text-white mb-4 mt-6">완전 가스켓 프리</h3>
+      <div class="product-grid">
+        <div class="product-card">
+          <h4 class="font-bold text-white mb-2">TYR Socket Rockets 2.0</h4>
+          <p class="text-sm text-slate-400 mb-2">단단한 플라스틱 컵만으로 구성</p>
+          <span class="badge badge-info">~$20</span>
+        </div>
+        <div class="product-card">
+          <h4 class="font-bold text-white mb-2">Swedish Goggles (Malmsten)</h4>
+          <p class="text-sm text-slate-400 mb-2">1970년대 오리지널 디자인</p>
+          <span class="badge badge-info">$5-15</span>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-semibold text-white mb-4 mt-6">미니멀 가스켓 (하이브리드)</h3>
+      <div class="product-grid">
+        <div class="product-card">
+          <h4 class="font-bold text-white mb-2">Speedo Speed Socket 2.0</h4>
+          <p class="text-sm text-slate-400 mb-2">작은 눈 가스켓, 수력학적 프로파일</p>
+          <span class="badge badge-info">중가</span>
+        </div>
+        <div class="product-card">
+          <h4 class="font-bold text-white mb-2">Arena Cobra Ultra Swipe</h4>
+          <p class="text-sm text-slate-400 mb-2">초저프로파일 + 최고 안티포그</p>
+          <span class="badge badge-info">$60-70</span>
+        </div>
+        <div class="product-card">
+          <h4 class="font-bold text-white mb-2">Speedo Fastskin Pure Focus</h4>
+          <p class="text-sm text-slate-400 mb-2">항력 5% 감소, 최고급</p>
+          <span class="badge badge-info">$80</span>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-semibold text-white mb-4 mt-6">대안 기술 (에어 쿠션)</h3>
+      <div class="product-grid">
+        <div class="product-card">
+          <h4 class="font-bold text-white mb-2">Snake & Pig Basilisk</h4>
+          <p class="text-sm text-slate-400 mb-2">이중벽 에어 쿠션 가스켓</p>
+          <span class="badge badge-success">팬더 자국 방지</span>
+        </div>
+        <div class="product-card">
+          <h4 class="font-bold text-white mb-2">FISKI 고글</h4>
+          <p class="text-sm text-slate-400 mb-2">슈퍼 소프트 실리콘 프레임</p>
+          <span class="badge badge-success">자국 없음</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 마케팅 권장사항 -->
+    <div class="research-card">
+      <div class="section-title">
+        <i class="fas fa-bullhorn"></i>
+        마케팅 전략 권장사항
+      </div>
+
+      <div class="highlight-box mb-4">
+        <h3 class="text-xl font-bold text-white mb-3">핵심 메시지 구조</h3>
+        <div class="text-2xl font-bold text-center py-4 px-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg border border-blue-500/30">
+          "가스켓 프리 디자인"으로 팬더 자국 없이,<br>
+          "인체공학 3D 설계"로 물 샐 틈 없이
+        </div>
+      </div>
+
+      <h3 class="text-lg font-semibold text-white mb-3">장점 강조 순서</h3>
+      <div class="space-y-3">
+        <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+          <span class="text-2xl font-bold text-blue-400">1</span>
+          <div>
+            <p class="font-bold text-white">팬더 자국 방지</p>
+            <p class="text-sm text-slate-400">가장 확실한 장점, 실제 리뷰로 검증됨</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+          <span class="text-2xl font-bold text-blue-400">2</span>
+          <div>
+            <p class="font-bold text-white">더 넓은 시야</p>
+            <p class="text-sm text-slate-400">기능적 우수성, 180° 파노라마와 연결</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+          <span class="text-2xl font-bold text-blue-400">3</span>
+          <div>
+            <p class="font-bold text-white">유선형 디자인</p>
+            <p class="text-sm text-slate-400">프리미엄 포지셔닝, 경쟁 브랜드 채택</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3 p-3 bg-white/5 rounded-lg">
+          <span class="text-2xl font-bold text-blue-400">4</span>
+          <div>
+            <p class="font-bold text-white">위생적 관리</p>
+            <p class="text-sm text-slate-400">부가적 장점, 이론적 타당성</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 결론 -->
+    <div class="research-card border-2 border-green-500/30 bg-gradient-to-br from-green-500/10 to-blue-500/10">
+      <div class="section-title text-green-400">
+        <i class="fas fa-check-double"></i>
+        결론
+      </div>
+
+      <div class="text-center mb-6">
+        <div class="inline-block px-6 py-3 bg-green-500/20 rounded-full border-2 border-green-500/40">
+          <p class="text-xl font-bold text-green-400">
+            ✅ 가스켓 프리 디자인은 마케팅적으로 타당함
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-6">
+        <div class="p-4 bg-white/5 rounded-lg">
+          <p class="text-green-400 font-semibold mb-2">✅ 검증된 사항</p>
+          <ul class="text-sm text-slate-300 space-y-1">
+            <li>팬더 자국 방지 효과 (실제 리뷰 확인)</li>
+            <li>시야각 개선 (기술적 명확성)</li>
+            <li>유선형 디자인 (주요 브랜드 채택)</li>
+          </ul>
+        </div>
+        <div class="p-4 bg-white/5 rounded-lg">
+          <p class="text-blue-400 font-semibold mb-2">💡 보완 전략</p>
+          <ul class="text-sm text-slate-300 space-y-1">
+            <li>누수 → 인체공학 3D 설계</li>
+            <li>불편함 → 고밀도 실리콘</li>
+            <li>2만원대 중반 프리미엄 포지셔닝</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="p-6 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg border border-blue-500/30">
+        <p class="text-sm text-slate-300 mb-2"><strong class="text-white">권장 최종 메시지:</strong></p>
+        <p class="text-lg font-semibold text-white leading-relaxed">
+          "가스켓 없는 프리미엄 디자인으로 팬더 자국 걱정 없이,<br>
+          인체공학 3D 곡면 설계로 물 샐 틈 없는 완벽한 밀착"
+        </p>
+      </div>
+    </div>
+
+    <!-- 출처 -->
+    <div class="research-card">
+      <div class="section-title">
+        <i class="fas fa-link"></i>
+        참고 자료
+      </div>
+      <div class="grid md:grid-cols-2 gap-3 text-sm">
+        <a href="#" class="p-3 bg-white/5 rounded hover:bg-white/10 transition">
+          <p class="text-blue-400">SwansUK - Gasket-less vs Traditional</p>
+        </a>
+        <a href="#" class="p-3 bg-white/5 rounded hover:bg-white/10 transition">
+          <p class="text-blue-400">LiveAbout - Goggles Without Rings</p>
+        </a>
+        <a href="#" class="p-3 bg-white/5 rounded hover:bg-white/10 transition">
+          <p class="text-blue-400">Triathlete - Prevent Goggle Eyes</p>
+        </a>
+        <a href="#" class="p-3 bg-white/5 rounded hover:bg-white/10 transition">
+          <p class="text-blue-400">Wikipedia - Swedish goggles</p>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
