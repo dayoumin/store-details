@@ -15,176 +15,123 @@
 
   <style>
     :root {
-      --lus-navy: #023E8A;
-      --lus-gold: #FF9F1C;
-      --lus-slate: #1e293b;
-      --lus-light: #f8fafc;
+      --lus-primary: #38bdf8;
+      --lus-dark: #0f172a;
+      --lus-deep: #020617;
+      --lus-slate: #64748b;
     }
 
     body {
-      font-family: 'Noto Sans KR', sans-serif;
+      font-family: 'Outfit', 'Noto Sans KR', sans-serif;
       background-color: #ffffff;
-      color: var(--lus-slate);
+      color: var(--lus-dark);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    .font-outfit {
-      font-family: 'Outfit', sans-serif;
-    }
-
-    /* Standard Width for Premium Feel */
-    .store-container {
-      max-width: 860px;
-      margin: 0 auto;
-      background-color: white;
-    }
-
-    /* Section Global Decor */
-    .section-block {
-      padding: 6rem 2.5rem;
-      position: relative;
-    }
-
-    .section-block.dark {
-      background-color: #0c121e;
-      color: white;
-    }
-
-    .section-block.soft {
-      background-color: #f1f5f9;
-    }
-
-    /* Realistic Typography */
-    .headline {
-      font-size: 3.2rem;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.08rem;
-      margin-bottom: 2rem;
       word-break: keep-all;
+    }
+
+    /* Premium Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-reveal {
+      animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    /* Advanced Typography */
+    .headline {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.05em;
+      margin-bottom: 2.5rem;
     }
 
     .sub-headline {
       font-size: 1.25rem;
-      font-weight: 300;
-      color: #64748b;
-      margin-bottom: 3rem;
-      line-height: 1.7;
-      letter-spacing: 0.02rem;
+      font-weight: 400;
+      color: var(--lus-slate);
+      line-height: 1.8;
+      letter-spacing: -0.01em;
+      opacity: 0.9;
     }
 
     .dark .sub-headline {
       color: #94a3b8;
     }
 
-    .highlight-glow {
+    /* Container refinement */
+    .store-container {
+      max-width: 860px;
+      margin: 0 auto;
+      box-shadow: 0 0 100px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-block {
+      padding: 8rem 3rem;
       position: relative;
-      display: inline-block;
-      z-index: 1;
     }
 
-    .highlight-glow::after {
-      content: '';
-      position: absolute;
-      bottom: 0.2rem;
-      left: -0.2rem;
-      right: -0.2rem;
-      height: 0.8rem;
-      background: rgba(56, 189, 248, 0.2);
-      z-index: -1;
+    /* Dark section with depth */
+    .section-block.dark {
+      background: linear-gradient(180deg, var(--lus-deep) 0%, var(--lus-dark) 100%);
+      color: white;
     }
 
-    /* Realistic Component: Premium Card */
-    .premium-card {
-      background: white;
-      border-radius: 24px;
-      padding: 2.5rem;
-      box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      transition: transform 0.4s ease;
-    }
-
-    .premium-card:hover {
-      transform: translateY(-5px);
-    }
-
-    /* Realistic Image Placeholder */
-    .img-frame {
-      width: 100%;
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 2.5rem 0;
-      background: #f1f5f9;
-      position: relative;
-      box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.15);
-    }
-
-    .img-frame img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .placeholder-content {
-      padding: 5rem 2rem;
-      text-align: center;
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    }
-
-    .placeholder-label {
-      font-family: 'Outfit';
-      font-weight: 700;
-      font-size: 0.75rem;
-      letter-spacing: 0.2rem;
-      text-transform: uppercase;
-      color: #94a3b8;
-      margin-bottom: 1rem;
-    }
-
-    /* Fixed aspect ratio for images to prevent layout shift */
-    .aspect-video-custom {
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-    }
-
-    .aspect-square-custom {
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-    }
-
-    /* Badges */
-    .label-badge {
-      display: inline-block;
-      padding: 0.4rem 1rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Chart Overrides */
-    .chart-box {
+    /* Glassmorphism elements */
+    .glass-card {
       background: rgba(255, 255, 255, 0.03);
       backdrop-filter: blur(10px);
-      border-radius: 30px;
-      padding: 2rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 2rem;
     }
 
-    /* Save Button */
-    .save-btn-container {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      z-index: 9999;
+    /* Image frames */
+    .img-outer {
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 100%);
+      border-radius: 2.5rem;
+      margin-top: 4rem;
     }
+
+    .img-inner {
+      border-radius: 2.4rem;
+      overflow: hidden;
+      background: #1e293b;
+    }
+
+    /* Badge refinement */
+    .label-badge {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .section-block {
+        padding: 5rem 1.5rem;
+      }
+
+      .headline {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
   </style>
 </head>
 
@@ -204,57 +151,67 @@
          SECTION 1: HERO (LUXURY ENTRANCE) - UPDATED
     ========================================= -->
     <section class="section-block dark overflow-hidden">
-      <div class="relative z-10 text-center">
-        <span class="label-badge bg-[#38bdf8]/20 text-[#38bdf8] border border-[#38bdf8]/30">The New Series</span>
+      <div class="relative z-10 text-center animate-reveal">
+        <span class="label-badge bg-white/10 text-white border border-white/20">New 루스 수경 출시</span>
         <h1 class="headline">
           비싸도 믿고 선택하는<br>
           <span class="text-white">이유가 있습니다.</span>
         </h1>
-        <p
-          class="sub-headline max-w-2xl mx-auto text-white/90 text-xl md:text-2xl font-medium tracking-tight leading-relaxed">
-          네이버 쇼핑 수영 귀마개 1페이지,<br>
-          가장 높은 가격대에서도 꾸준히 선택받는 루스.<br>
-          <span class="text-[#38bdf8] font-bold">이제 그 신뢰를 루스 수경으로 경험하세요.</span>
+        <p class="sub-headline max-w-2xl mx-auto text-slate-300">
+          귀 드라이기 1위, 프리미엄 수영 귀마개 돌풍<br>
+          <span class="text-white font-bold inline-block mt-4">이제 그 신뢰를 "루스 수경"으로 경험하세요.</span>
         </p>
 
-        <!-- 신뢰 증명 배너 (NEW) -->
-        <div
-          class="flex items-center justify-center gap-8 mt-10 p-6 bg-gradient-to-r from-[#FF9F1C]/10 to-[#38bdf8]/10 rounded-2xl border border-white/10 max-w-3xl mx-auto">
-
-          <div class="flex items-center gap-3">
-            <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-              <span class="text-3xl">🔊</span>
+        <!-- Trust Stats with Images and Links -->
+        <div class="mt-16 flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto px-4">
+          <!-- Item 1: Ear Dryer -->
+          <a href="#"
+            class="flex-1 glass-card p-6 flex items-center gap-6 hover:bg-white/10 transition-all border-white/10 group">
+            <div
+              class="w-24 h-24 rounded-2xl bg-white/5 overflow-hidden flex-shrink-0 border border-white/10 group-hover:border-white/30 transition-colors">
+              <img src="assets/uploaded_image_1766044809313.png" alt="귀 드라이기"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
             </div>
             <div class="text-left">
-              <div class="text-[#FF9F1C] text-xs font-bold mb-1">귀 드라이기</div>
-              <div class="text-white font-bold text-sm">2025 판매 1위 · 리뷰 1위</div>
+              <div class="text-[#FF9F1C] text-[10px] font-bold tracking-widest uppercase mb-1">귀 드라이기</div>
+              <div class="text-white font-bold text-lg leading-tight">판매 1위 · 리뷰 1위</div>
+              <div
+                class="mt-2 text-[10px] text-slate-400 group-hover:text-blue-400 flex items-center gap-1 transition-colors">
+                제품 보기 <i class="fas fa-chevron-right text-[8px]"></i>
+              </div>
             </div>
-          </div>
+          </a>
 
-          <div class="h-10 w-px bg-white/20"></div>
-
-          <div class="flex items-center gap-3">
-            <div class="w-16 h-16 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-              <span class="text-3xl">👂</span>
+          <!-- Item 2: Ear Plugs -->
+          <a href="#"
+            class="flex-1 glass-card p-6 flex items-center gap-6 hover:bg-white/10 transition-all border-white/10 group">
+            <div
+              class="w-24 h-24 rounded-2xl bg-white/5 overflow-hidden flex-shrink-0 border border-white/10 group-hover:border-white/30 transition-colors">
+              <img src="assets/silicone.png" alt="수영 귀마개"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
             </div>
             <div class="text-left">
-              <div class="text-[#38bdf8] text-xs font-bold mb-1">수영 귀마개</div>
-              <div class="text-white font-bold text-sm">네이버 최고가 제품군</div>
+              <div class="text-blue-400 text-[10px] font-bold tracking-widest uppercase mb-1">수영 귀마개</div>
+              <div class="text-white font-bold text-lg leading-tight">네이버 최고가군 1위</div>
+              <div
+                class="mt-2 text-[10px] text-slate-400 group-hover:text-blue-400 flex items-center gap-1 transition-colors">
+                제품 보기 <i class="fas fa-chevron-right text-[8px]"></i>
+              </div>
             </div>
-          </div>
-
-          <div class="text-white/60 text-xs ml-4 text-left leading-relaxed">
-            → 검증된 신뢰를<br>수경으로 이어갑니다
-          </div>
+          </a>
         </div>
 
-        <div class="img-frame mt-12 mb-0">
-          <img src="assets/hero.png" alt="LUS Hero Goggles" class="w-full h-auto">
+        <div class="img-outer">
+          <div class="img-inner shadow-2xl">
+            <img src="assets/hero.png" alt="LUS Hero Goggles"
+              class="w-full h-auto scale-105 hover:scale-100 transition-transform duration-1000">
+          </div>
         </div>
       </div>
 
-      <!-- Subtle Background Decor -->
-      <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full"></div>
+      <!-- Atmospheric Decor -->
+      <div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-500/10 blur-[150px] rounded-full"></div>
+      <div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#FF9F1C]/5 blur-[120px] rounded-full"></div>
     </section>
 
 
