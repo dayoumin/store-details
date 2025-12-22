@@ -131,17 +131,78 @@
         font-size: 2.2rem;
       }
     }
-  </style>
+
+    /* Export Button - Fixed Position */
+    .save-btn-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 9999;
+    }
+
+    .save-btn-container button {
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .save-btn-container button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .save-btn-container {
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .save-btn-container button {
+        padding: 0.75rem 1.25rem;
+      }
+
+      .save-btn-container button span {
+        display: none;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .save-btn-container {
+        display: none !important;
+      }
+
+      body {
+        background: white !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .store-container {
+        max-width: 100% !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+
+      .section-block {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <div class="save-btn-container">
+  <div class="save-btn-container flex flex-col gap-3">
     <button onclick="saveAsImage()"
-      class="bg-black/80 backdrop-blur-md hover:bg-black text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all">
+      class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all">
       <i class="fas fa-camera-retro"></i>
-      <span class="font-outfit text-sm tracking-widest uppercase">Export Detail Image</span>
+      <span class="font-outfit text-sm tracking-widest uppercase">이미지로 저장 (PNG)</span>
+    </button>
+    <button onclick="window.print()"
+      class="bg-black/80 backdrop-blur-md hover:bg-black text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all">
+      <i class="fas fa-file-pdf"></i>
+      <span class="font-outfit text-sm tracking-widest uppercase">PDF로 저장 (권장)</span>
     </button>
   </div>
 
@@ -434,10 +495,8 @@
               Racing Goggles</div>
             <div
               class="rounded-3xl overflow-hidden border-4 border-slate-200 shadow-lg grayscale bg-slate-100 min-h-[250px] flex items-center justify-center">
-              <div class="relative w-full h-full flex items-center justify-center">
-                <img src="assets/view_narrow.png" alt="Narrow View"
-                  class="w-full h-auto brightness-50 object-cover min-h-[250px] opacity-0"
-                  onerror="this.style.opacity='0'; this.parentElement.classList.add('bg-slate-200')">
+              <div class="relative w-full h-full flex items-center justify-center min-h-[250px]">
+                <!-- TODO: view_narrow.png 이미지 추가 필요 -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
                   <div
                     class="w-32 h-32 border-2 border-dashed border-red-500/50 rounded-full animate-pulse flex items-center justify-center">
@@ -457,9 +516,8 @@
               LUS Panorama</div>
             <div
               class="rounded-3xl overflow-hidden border-4 border-blue-500 shadow-2xl bg-blue-50 min-h-[250px] flex items-center justify-center">
-              <div class="relative w-full h-full flex items-center justify-center">
-                <img src="assets/view_wide.png" alt="LUS Wide View"
-                  class="w-full h-auto object-cover min-h-[250px] opacity-0" onerror="this.style.opacity='0';">
+              <div class="relative w-full h-full flex items-center justify-center min-h-[250px]">
+                <!-- TODO: view_wide.png 이미지 추가 필요 -->
                 <div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
                   <i class="fas fa-expand-alt text-blue-200 text-5xl"></i>
                   <span class="text-blue-600 font-bold">180° PANORAMA</span>
@@ -525,8 +583,13 @@
               </div>
               <div class="absolute border border-blue-400/30 w-3/4 h-3/4 rounded-full animate-ping"></div>
             </div>
-            <div class="img-frame bg-white shadow-none border border-blue-100 p-8">
-              <img src="assets/ergo_3d_scan.png" alt="3D Ergonomic Scan" class="opacity-80">
+            <div
+              class="img-frame bg-white shadow-none border border-blue-100 p-8 min-h-[200px] flex items-center justify-center">
+              <!-- TODO: ergo_3d_scan.png 이미지 추가 필요 -->
+              <div class="text-center text-slate-400">
+                <i class="fas fa-cube text-4xl mb-2"></i>
+                <p class="text-xs">3D Scan Image</p>
+              </div>
             </div>
           </div>
           <div class="chart-box mt-8 bg-gradient-to-br from-slate-900 to-slate-800 border-none">
@@ -671,7 +734,7 @@
             </div>
           </div>
           <div class="mt-10 text-[11px] text-slate-400">
-            * KCL(한국건설생활환경시험연구원) 및 주요 공인기관을 통한 정식 성적 확인 완료
+            * 제조사 품질 테스트 성적서 기준
           </div>
         </div>
       </div>
@@ -1019,75 +1082,101 @@
 
   <!-- CHART LOGIC -->
   <script>
-    function saveAsImage() {
-      const element = document.getElementById('capture-area');
-      const btn = document.querySelector('.save-btn-container');
-
-      // 저장 중 버튼 숨김 (선택 사항)
-      btn.style.opacity = '0';
-
-      window.scrollTo(0, 0);
-
-      html2canvas(element, {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: "#ffffff",
-        logging: false,
-        width: element.offsetWidth,
-        windowWidth: element.scrollWidth
-      }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'premium_goggles_detail_v2.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        btn.style.opacity = '1';
-        alert('이미지 저장이 완료되었습니다!');
-      });
-    }
-
     Chart.defaults.font.family = "'Montserrat', 'Noto Sans KR', sans-serif";
     Chart.defaults.color = '#64748b';
 
-    // 2. FOV Chart (Bar)
-    new Chart(document.getElementById('fovChart'), {
-      type: 'bar',
-      data: {
-        labels: ['일반 수경 (Tunnel)', '와이드 뷰 (Wide)'],
-        datasets: [{
-          label: '시야각 (도)',
-          data: [70, 180],
-          backgroundColor: ['#94a3b8', '#00B4D8'],
-          borderRadius: 8,
-          barThickness: 40
-        }]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true, max: 200, title: { display: true, text: '시야각(°)' } }, x: { grid: { display: false } } }
-      }
-    });
+    // FOV Chart (Bar) - 요소 존재 확인 후 생성
+    const fovChartEl = document.getElementById('fovChart');
+    if (fovChartEl) {
+      new Chart(fovChartEl, {
+        type: 'bar',
+        data: {
+          labels: ['일반 수경 (Tunnel)', '와이드 뷰 (Wide)'],
+          datasets: [{
+            label: '시야각 (도)',
+            data: [70, 180],
+            backgroundColor: ['#94a3b8', '#00B4D8'],
+            borderRadius: 8,
+            barThickness: 40
+          }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, max: 200, title: { display: true, text: '시야각(°)' } }, x: { grid: { display: false } } }
+        }
+      });
+    }
 
-    // 3. Comfort Chart (Doughnut - Inverse Logic for Pressure)
-    new Chart(document.getElementById('comfortChart'), {
-      type: 'bar',
-      data: {
-        labels: ['일반 수경 (압박 심함)', '와이드 뷰 (편안함)'],
-        datasets: [{
-          label: '눈 주변 압력 지수 (낮을수록 좋음)',
-          data: [90, 20],
-          backgroundColor: ['#ef4444', '#00B4D8'],
-          borderRadius: 50,
-          barThickness: 30
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: { x: { display: false, max: 100 }, y: { grid: { display: false } } }
+    // Comfort Chart (Bar) - 요소 존재 확인 후 생성
+    const comfortChartEl = document.getElementById('comfortChart');
+    if (comfortChartEl) {
+      new Chart(comfortChartEl, {
+        type: 'bar',
+        data: {
+          labels: ['일반 수경 (압박 심함)', '와이드 뷰 (편안함)'],
+          datasets: [{
+            label: '눈 주변 압력 지수 (낮을수록 좋음)',
+            data: [90, 20],
+            backgroundColor: ['#ef4444', '#00B4D8'],
+            borderRadius: 50,
+            barThickness: 30
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { x: { display: false, max: 100 }, y: { grid: { display: false } } }
+        }
+      });
+    }
+
+    // IMAGE EXPORT LOGIC
+    async function saveAsImage() {
+      const element = document.getElementById('capture-area');
+      const btnContainer = document.querySelector('.save-btn-container');
+
+      try {
+        btnContainer.style.visibility = 'hidden';
+        window.scrollTo(0, 0);
+
+        if (document.fonts) await document.fonts.ready;
+
+        const canvas = await html2canvas(element, {
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          backgroundColor: "#ffffff",
+          windowWidth: 1200, // 데스크탑 화면 너비 강제
+          onclone: (clonedDoc) => {
+            const style = clonedDoc.createElement('style');
+            style.innerHTML = `
+              * { animation: none !important; transition: none !important; }
+              .animate-reveal { opacity: 1 !important; transform: none !important; }
+              #capture-area { transform: none !important; width: 860px !important; margin: 0 auto !important; }
+              
+              /* 반응형 레이아웃 붕괴 방지 */
+              .md\\:flex-row { flex-direction: row !important; }
+              .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+              .md\\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; }
+            `;
+            clonedDoc.head.appendChild(style);
+          }
+        });
+
+        const link = document.createElement('a');
+        link.download = 'LUS_Premium_Goggles_Detail.png';
+        link.href = canvas.toDataURL('image/png', 1.0);
+        link.click();
+        alert('이미지 저장이 완료되었습니다!');
+      } catch (error) {
+        console.error('Capture Error:', error);
+        alert('오류가 발생했습니다. PDF 저장 기능을 이용해 주세요.');
+      } finally {
+        btnContainer.style.visibility = 'visible';
       }
-    });
+    }
   </script>
 
 </body>
