@@ -329,36 +329,49 @@
     ========================================= -->
     <section class="section-block dark">
       <div class="text-center mb-16">
-        <span class="label-badge bg-white/10 text-white">The Truth</span>
-        <h2 class="headline">기능에 매몰된<br><span class="text-blue-400">우리의 고정관념</span></h2>
+        <span class="label-badge bg-red-500/20 text-red-400 border border-red-500/30">잠깐, 이건 착각입니다</span>
+        <h2 class="headline">"작은 렌즈가<br><span class="text-red-400">좋은 거 아냐?"</span></h2>
       </div>
 
       <div class="max-w-3xl mx-auto mb-16 text-center">
-        <h4 class="text-2xl font-bold text-white mb-6">선수용 수경의 고통, 이제 그만.</h4>
+        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-5 mb-8 max-w-lg mx-auto">
+          <p class="text-slate-400 text-sm leading-relaxed">
+            <i class="fas fa-tv mr-2 text-slate-500"></i>TV에서 본 올림픽 선수들의 수경, 기억나시죠?<br>
+            날렵하고 작은 렌즈. <strong class="text-white">"저게 좋은 거구나"</strong> 생각하셨을 겁니다.
+          </p>
+        </div>
+        <h4 class="text-2xl font-bold text-white mb-6">하지만 그건 <span class="text-red-400">'0.01초'</span>를 위한 선수 전용 장비입니다.
+        </h4>
         <p class="text-slate-300 text-lg leading-relaxed mb-6">
-          0.01초 단축을 위해 시야와 편안함을 포기한 작은 렌즈.<br class="hidden md:block">
-          선수용의 강한 압박은 일반인에게는 고통일 뿐입니다.
+          작은 렌즈는 물의 저항을 줄여 <strong class="text-white">기록 단축</strong>에만 집중한 설계.<br class="hidden md:block">
+          그 대가로? <strong class="text-red-400">시야의 60%</strong>와 <strong class="text-red-400">편안함</strong>을 포기했죠.
         </p>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8 max-w-xl mx-auto">
+          <p class="text-slate-400 text-sm mb-3">매일 건강을 위해 수영장을 찾는 당신에게</p>
+          <p class="text-white text-lg font-bold">
+            "레인 끝 벽이 갑자기 나타나 깜짝 놀란 적 있으신가요?"<br>
+            "옆 사람이 언제 오는지 몰라 부딪힐 뻔한 적은요?"
+          </p>
+        </div>
         <p class="text-blue-400 text-xl font-bold">
-          LUS는 기록보다 당신의 시야와 편안함에 집중합니다.
+          <span class="underline decoration-2">당신의 안전과 편안함</span>을 위해 설계되었습니다.
         </p>
       </div>
 
       <div class="max-w-4xl mx-auto space-y-16">
-        <!-- 1. Radar Chart Block (Vertical) -->
         <div class="space-y-6">
           <div
-            class="chart-box h-[450px] bg-white/5 border border-white/10 rounded-[40px] p-10 flex items-center justify-center">
-            <canvas id="radarChart"></canvas>
+            class="h-[450px] bg-white/5 border border-white/10 rounded-[40px] p-6 flex items-center justify-center overflow-hidden">
+            <img src="assets/radar_chart_final.png" alt="성능 비교 레이더 차트" class="max-w-full max-h-full object-contain">
           </div>
           <div class="bg-blue-500/10 p-10 rounded-[30px] border border-blue-500/20 text-center">
             <h5 class="text-[#38bdf8] text-xl font-bold mb-4 flex items-center justify-center gap-3">
               <i class="fas fa-chart-pie"></i>
-              <span>5차원 성능 분포 분석</span>
+              <span>5가지 핵심 성능 비교</span>
             </h5>
             <p class="text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              속도에만 치중된 비정상적 밸런스에서 벗어났습니다.<br>
-              <strong>편안함과 시야</strong>를 중심으로 설계된 압도적 성능을 확인하세요.
+              선수용은 <strong class="text-red-400">'속도' 하나</strong>만을 위해 나머지 4가지를 희생했습니다.<br>
+              루스 수경은 <strong class="text-blue-400">편안함·시야·안전성·품질</strong> 모두를 잡았습니다.
             </p>
           </div>
         </div>
@@ -375,11 +388,22 @@
           <div class="bg-blue-500/10 p-10 rounded-[30px] border border-blue-500/20 text-center">
             <h5 class="text-[#38bdf8] text-xl font-bold mb-4 flex items-center justify-center gap-3">
               <i class="fas fa-vector-square"></i>
-              <span>구조적 메커니즘 차이</span>
+              <span>렌즈 크기가 만드는 결정적 차이</span>
             </h5>
+            <div class="flex justify-center gap-8 mb-6">
+              <div class="text-center">
+                <div class="text-red-400 text-4xl font-black">70°</div>
+                <div class="text-xs text-slate-400 mt-1">선수용 시야각</div>
+              </div>
+              <div class="text-slate-500 text-2xl flex items-center">→</div>
+              <div class="text-center">
+                <div class="text-blue-400 text-4xl font-black">180°</div>
+                <div class="text-xs text-slate-400 mt-1">LUS 시야각</div>
+              </div>
+            </div>
             <p class="text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              저항을 줄이기 위한 압박과 좁은 시야는 이제 과거의 일입니다.<br>
-              LUS는 공학적 곡률로 <strong>마찰은 줄이고 시야는 180도</strong>까지 넓혔습니다.
+              작은 렌즈의 수중 저항 감소 효과는 <strong class="text-slate-400">단 0.03%</strong>.<br>
+              그 미미한 차이를 위해 <strong class="text-red-400">시야의 60%를 포기</strong>할 이유가 있을까요?
             </p>
           </div>
         </div>
@@ -770,10 +794,57 @@
             <span class="text-3xl mr-3">🕶️</span>
             <h3 class="text-2xl font-bold">와이드 렌즈 특성 안내</h3>
           </div>
-          <p class="text-base leading-relaxed">
+          <p class="text-base leading-relaxed mb-4">
             180도 광각 구현을 위한 렌즈 곡률 특성상, 물 밖에서는 <strong>약간의 어지러움이나 왜곡</strong>이 느껴질 수 있습니다. 이는 수중에서 선명하고 넓은 시야를 확보하기 위한
             정상적인 구조입니다.
           </p>
+          <p class="text-sm text-orange-600 font-bold">
+            ※ 대왕 렌즈 착용 팁: 렌즈가 큰 만큼 얼굴 굴곡에 민감합니다. 끈 위치를 정수리 쪽으로 올려 고정력을 높여주세요.
+          </p>
+        </div>
+
+        <!-- 5. Mirror/Polarized Lens Guide -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-8 border-purple-500">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-3">🌫️</span>
+            <h3 class="text-2xl font-bold">"어둡다?" 렌즈별 밝기 특성</h3>
+          </div>
+          <p class="text-sm text-gray-600 mb-4">렌즈 코팅에 따라 보이는 밝기가 다릅니다. 불량이 아닌 <strong>제품 특성</strong>입니다.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-slate-800 text-white p-4 rounded-xl">
+              <p class="text-sm font-bold text-cyan-300 mb-2">미러(Mirror) 렌즈</p>
+              <ul class="text-xs space-y-1 text-gray-300">
+                <li>• 밖에서 내 눈이 보이지 않음 (프라이버시)</li>
+                <li>• 선글라스처럼 <strong class="text-white">약간 어둡게</strong> 보입니다</li>
+                <li>• 실내가 어두우면 더 어둡게 느껴질 수 있음</li>
+              </ul>
+            </div>
+            <div class="bg-indigo-600 text-white p-4 rounded-xl">
+              <p class="text-sm font-bold text-yellow-300 mb-2">편광(Polarized) 렌즈</p>
+              <ul class="text-xs space-y-1 text-gray-200">
+                <li>• 물 표면 <strong class="text-white">반사광(눈부심) 차단</strong></li>
+                <li>• 야외/강한 조명에서 선명도 극대화</li>
+                <li>• 조명 약한 실내에선 효과 체감이 덜함</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Pressure Marks -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border-l-8 border-yellow-500">
+          <div class="flex items-center mb-4">
+            <span class="text-3xl mr-3">🐼</span>
+            <h3 class="text-2xl font-bold">자국 & 압박감</h3>
+          </div>
+          <p class="text-base leading-relaxed mb-3">
+            장시간 착용 시 눈 주위 자국은 <strong>자연스러운 현상</strong>입니다. 통증이 심하다면?
+          </p>
+          <div class="bg-yellow-50 p-4 rounded-lg">
+            <p class="text-sm text-slate-700">
+              <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+              스트랩(끈) 장력을 조금 느슨하게 조절해보세요. <strong>"물이 안 샐 정도로만"</strong> 조이는 것이 베스트입니다.
+            </p>
+          </div>
         </div>
 
         <!-- 3. Washing -->
@@ -976,43 +1047,6 @@
 
     Chart.defaults.font.family = "'Montserrat', 'Noto Sans KR', sans-serif";
     Chart.defaults.color = '#64748b';
-
-    // 1. Radar Chart (Comparison)
-    new Chart(document.getElementById('radarChart'), {
-      type: 'radar',
-      data: {
-        labels: ['편안함(Comfort)', '시야(View)', '안전성', '가성비', '속도(Record)'],
-        datasets: [{
-          label: '와이드 뷰',
-          data: [10, 10, 9, 9, 6],
-          backgroundColor: 'rgba(0, 180, 216, 0.5)',
-          borderColor: '#00B4D8',
-          borderWidth: 2,
-          pointBackgroundColor: '#00B4D8'
-        }, {
-          label: '일반 선수용',
-          data: [3, 4, 5, 6, 10],
-          backgroundColor: 'rgba(239, 68, 68, 0.2)',
-          borderColor: '#ef4444',
-          borderWidth: 2,
-          borderDash: [5, 5],
-          pointBackgroundColor: '#ef4444'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          r: {
-            angleLines: { color: '#e2e8f0' },
-            grid: { color: '#e2e8f0' },
-            pointLabels: { font: { size: 11, weight: 'bold' }, color: '#94a3b8' },
-            suggestedMin: 0, suggestedMax: 10, ticks: { display: false }
-          }
-        },
-        plugins: { legend: { position: 'bottom', labels: { usePointStyle: true } } }
-      }
-    });
 
     // 2. FOV Chart (Bar)
     new Chart(document.getElementById('fovChart'), {

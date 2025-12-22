@@ -162,14 +162,11 @@
 
       <!-- 상세페이지 Sub-Nav -->
       <div id="detail-subnav" class="sub-nav-container active h-full gap-2">
-        <button onclick="switchView('detail_v2', this)" class="nav-tab active">
-          <i class="fas fa-star"></i> <span>V2 New</span>
+        <button onclick="switchView('detail_adopted', this)" class="nav-tab active">
+          <i class="fas fa-check-circle"></i> <span>채택 (Adopted)</span>
         </button>
-        <button onclick="switchView('detail', this)" class="nav-tab">
-          <i class="fas fa-desktop"></i> <span>Pro</span>
-        </button>
-        <button onclick="switchView('detail_v1', this)" class="nav-tab">
-          <i class="fas fa-history"></i> <span>V1</span>
+        <button onclick="switchView('detail_backup1', this)" class="nav-tab">
+          <i class="fas fa-history"></i> <span>백업 1 (Backup)</span>
         </button>
       </div>
 
@@ -191,6 +188,16 @@
         <button onclick="switchView('care', this)" class="nav-tab active">
           <i class="fas fa-hand-sparkles"></i> <span>관리 방법</span>
         </button>
+        <button onclick="switchView('goggles_guide', this)" class="nav-tab">
+          <i class="fas fa-blog"></i> <span>오해방지 가이드</span>
+        </button>
+      </div>
+
+      <!-- 블로그/스토리 Sub-Nav -->
+      <div id="blog-subnav" class="sub-nav-container h-full gap-2">
+        <button onclick="switchView('goggles_blog', this)" class="nav-tab active">
+          <i class="fas fa-exclamation-circle"></i> <span>오해방지 가이드</span>
+        </button>
       </div>
 
       <!-- Temp Sub-Nav -->
@@ -206,11 +213,18 @@
         </button>
       </div>
 
-      <div class="ml-auto flex items-center gap-6">
-        <div class="flex items-center gap-2 px-4 py-2 bg-slate-800/50 rounded-full border border-slate-700/50">
+      <div class="ml-auto flex items-center gap-4">
+        <!-- 현재 카테고리 표시 -->
+        <div id="current-category-badge"
+          class="hidden md:flex items-center gap-2 px-3 py-1.5 bg-blue-500/20 rounded-lg border border-blue-500/30">
+          <i id="category-icon" class="fas fa-image text-blue-400 text-xs"></i>
+          <span id="category-name" class="text-blue-300 text-xs font-bold">상세페이지</span>
+        </div>
+        <!-- 파일 상태 표시 -->
+        <div class="flex items-center gap-2 px-3 py-1.5 bg-slate-800/50 rounded-lg border border-slate-700/50">
           <div class="status-dot"></div>
-          <span id="file-path" class="text-slate-400 text-[10px] font-mono tracking-widest uppercase">READY:
-            detail_page_v2.html</span>
+          <span id="file-path"
+            class="text-slate-400 text-[10px] font-mono tracking-wider">detail_page_pro_adopted.html</span>
         </div>
       </div>
     </nav>
@@ -230,6 +244,10 @@
           <i class="fas fa-book-open"></i>
           <span>가이드</span>
         </button>
+        <button onclick="switchCategory('blog')" class="category-btn" id="cat-blog">
+          <i class="fas fa-blog"></i>
+          <span>블로그/스토리</span>
+        </button>
         <button onclick="switchCategory('temp')" class="category-btn" id="cat-temp">
           <i class="fas fa-archive"></i>
           <span>Temp</span>
@@ -238,13 +256,34 @@
 
       <!-- Viewer Area -->
       <main class="viewer-container p-4 pb-0 bg-gradient-to-b from-[#0f172a] to-[#1e293b]">
-        <iframe id="viewer" src="detail_page_v2.html"></iframe>
+        <iframe id="viewer" src="detail_page_pro_adopted.html"></iframe>
       </main>
     </div>
   </div>
 
   <script>
     let currentCategory = 'detail';
+
+    // 카테고리 정보 매핑
+    const categoryInfo = {
+      detail: { name: '상세페이지', icon: 'fa-image', color: 'blue' },
+      product: { name: '제품 정보', icon: 'fa-star', color: 'amber' },
+      guide: { name: '가이드', icon: 'fa-book-open', color: 'green' },
+      blog: { name: '블로그/스토리', icon: 'fa-blog', color: 'purple' },
+      temp: { name: 'Temp', icon: 'fa-archive', color: 'slate' }
+    };
+
+    function updateCategoryBadge(category) {
+      const info = categoryInfo[category];
+      const badge = document.getElementById('current-category-badge');
+      const icon = document.getElementById('category-icon');
+      const name = document.getElementById('category-name');
+
+      if (info && badge && icon && name) {
+        icon.className = `fas ${info.icon} text-blue-400 text-xs`;
+        name.textContent = info.name;
+      }
+    }
 
     function switchCategory(category) {
       // Update category buttons
@@ -259,6 +298,9 @@
 
       currentCategory = category;
       localStorage.setItem('lus_active_category', category);
+
+      // Update category badge
+      updateCategoryBadge(category);
 
       // Click first tab in the new category
       const firstTab = document.querySelector('#' + category + '-subnav .nav-tab');
@@ -275,31 +317,68 @@
       const pathDisplay = document.getElementById('file-path');
 
       let targetFile = '';
+      let displayName = '';
+
       switch (type) {
         // 상세페이지
-        case 'detail_v2': targetFile = 'detail_page_v2.html'; break;
-        case 'detail': targetFile = 'detail_page.html'; break;
-        case 'detail_v1': targetFile = 'detail_v1.html'; break;
+        case 'detail_adopted':
+          targetFile = 'detail_page_pro_adopted.html';
+          displayName = 'Adopted';
+          break;
+        case 'detail_backup1':
+          targetFile = 'detail_page_backup1.html';
+          displayName = 'Backup 1';
+          break;
         // 제품 정보
-        case 'lens': targetFile = 'lens_guide.html'; break;
-        case 'gasket_free': targetFile = 'product_gasket_free.html'; break;
-        case 'uv400': targetFile = 'product_uv400.html'; break;
+        case 'lens':
+          targetFile = 'lens_guide.html';
+          displayName = '렌즈 기술';
+          break;
+        case 'gasket_free':
+          targetFile = 'product_gasket_free.html';
+          displayName = '가스켓 프리';
+          break;
+        case 'uv400':
+          targetFile = 'product_uv400.html';
+          displayName = 'UV400';
+          break;
         // 가이드
-        case 'care': targetFile = 'care_guide.html'; break;
+        case 'care':
+          targetFile = 'care_guide.html';
+          displayName = '관리 방법';
+          break;
+        case 'goggles_guide':
+          targetFile = 'goggles_guide_blog.html';
+          displayName = '오해방지 가이드';
+          break;
+        // 블로그/스토리
+        case 'goggles_blog':
+          targetFile = 'goggles_guide_blog.html';
+          displayName = '오해방지 가이드';
+          break;
         // Temp
-        case 'gasket_research': targetFile = 'research_gasket_free.html'; break;
-        case 'center': targetFile = 'guide_center.html'; break;
-        case 'research': targetFile = 'research_center.html'; break;
+        case 'gasket_research':
+          targetFile = 'research_gasket_free.html';
+          displayName = '가스켓 조사';
+          break;
+        case 'center':
+          targetFile = 'guide_center.html';
+          displayName = 'Integration';
+          break;
+        case 'research':
+          targetFile = 'research_center.html';
+          displayName = 'Research';
+          break;
       }
 
       viewer.src = targetFile;
-      pathDisplay.innerText = 'SYNCED: ' + targetFile;
+      pathDisplay.textContent = targetFile;
       localStorage.setItem('lus_active_tab', type);
     }
 
     window.onload = function () {
       const savedCategory = localStorage.getItem('lus_active_category') || 'detail';
-      const savedTab = localStorage.getItem('lus_active_tab') || 'detail_v2';
+      const savedTab = localStorage.getItem('lus_active_tab') || 'detail_adopted';
 
       // Restore category
       const categoryBtn = document.getElementById('cat-' + savedCategory);

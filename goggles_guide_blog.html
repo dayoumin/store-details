@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수경 오해 방지 가이드 | 교환/반품 전 꼭 읽어주세요</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.8;
+        }
+
+        /* 전체 레이아웃 */
+        .page-wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        /* 블로그 본문 컨테이너 */
+        .blog-container {
+            flex: 1;
+            max-width: 680px;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 우측 TOC 사이드바 */
+        .toc-sidebar {
+            width: 220px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 1.5rem;
+            height: fit-content;
+            max-height: calc(100vh - 3rem);
+            overflow-y: auto;
+        }
+
+        .toc-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .toc-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-item {
+            margin-bottom: 0.25rem;
+        }
+
+        .toc-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.8rem;
+            color: #64748b;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .toc-link:hover {
+            background: #f1f5f9;
+            color: #0ea5e9;
+        }
+
+        .toc-link.active {
+            background: #eff6ff;
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        .toc-number {
+            width: 20px;
+            height: 20px;
+            background: #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .toc-link.active .toc-number {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* 모바일에서 TOC 숨김 */
+        @media (max-width: 900px) {
+            .page-wrapper {
+                padding: 0;
+            }
+            .toc-sidebar {
+                display: none;
+            }
+            .blog-container {
+                max-width: 100%;
+                border-radius: 0;
+            }
+        }
+
+        /* 블로그 스타일 타이포그래피 */
+        .blog-title {
+            font-size: 1.75rem;
+            font-weight: 900;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+        }
+
+        .blog-subtitle {
+            font-size: 1rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .content-box {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1.25rem;
+            margin: 1rem 0;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            color: white;
+            border-radius: 0;
+            padding: 1.5rem;
+        }
+
+        .warning-box {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .tip-box {
+            background: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 1rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* 비교 테이블 스타일 */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .compare-bad {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .compare-good {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* 체크리스트 */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+
+        /* 아코디언 스타일 FAQ */
+        details {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+        }
+
+        details summary {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #f8fafc;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        details .faq-content {
+            padding: 1rem 1.25rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* 카드 스타일 */
+        .lens-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 구분선 */
+        .divider {
+            height: 8px;
+            background: #f1f5f9;
+            margin: 2rem 0;
+        }
+
+        /* 숫자 강조 */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* 스크롤바 스타일 */
+        .toc-sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .toc-sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .toc-sidebar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+    <!-- 블로그 본문 -->
+    <div class="blog-container">
+
+        <!-- 헤더 섹션 -->
+        <header class="highlight-box text-center p-8">
+            <div class="inline-block bg-white/20 px-3 py-1 rounded-full text-xs font-bold mb-4">
+                와이드 뷰 대왕렌즈 수경 가이드
+            </div>
+            <h1 class="blog-title text-white mb-4">
+                잠깐! 불량이 아닙니다.<br>
+                <span class="text-yellow-300">오해타파 & 수명연장 가이드</span>
+            </h1>
+            <p class="text-blue-100 text-sm">
+                "어둡다? 물샌다? 김서린다?"<br>
+                제품 특성만 알면 <strong class="text-white">수경 수명이 2배</strong>가 됩니다.<br>
+                교환/반품 전 꼭 읽어주세요!
+            </p>
+        </header>
+
+        <!-- 본문 시작 -->
+        <main class="p-6">
+
+            <!-- 도입부 -->
+            <section class="mb-8">
+                <p class="text-lg leading-relaxed mb-4">
+                    수경을 받고 "이거 불량 아닌가?" 하고 의심하신 적 있으신가요?
+                </p>
+                <p class="text-base text-slate-600 leading-relaxed">
+                    김이 서리고, 어둡게 보이고, 물이 살짝 들어오고...
+                    사실 이런 현상들은 <strong>제품의 특성</strong>인 경우가 대부분입니다.
+                    오늘 이 글 하나로 모든 오해를 풀어드릴게요!
+                </p>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 1. 김서림 (안티포그) -->
+            <section id="section-1" class="mb-10">
+                <h2 class="section-title">
+                    <span class="text-2xl">1</span>
+                    <span>안티포그(김서림 방지)의 진실</span>
+                </h2>
+
+                <div class="warning-box mb-4">
+                    <p class="font-bold text-red-600 text-sm mb-2">
+                        <i class="fas fa-exclamation-triangle mr-1"></i>
+                        안티포그는 '영구적'이지 않습니다
+                    </p>
+                    <p class="text-sm text-slate-700">
+                        수영장 물의 <strong>염소 성분</strong>, <strong>샴푸</strong>, 얼굴의 <strong>열기</strong>, <strong>마찰</strong> 등으로
+                        코팅은 서서히 닳아 없어지는 <strong>소모품</strong>입니다.
+                    </p>
+                </div>
+
+                <p class="text-base text-slate-600 mb-4">
+                    "처음엔 잘 되다가 나중에 김이 서리는 것"은 지극히 <strong>정상</strong>입니다.
+                    새 수경이라도 사용 환경에 따라 1~3개월 후부터 김서림이 발생할 수 있어요.
+                </p>
+
+                <div class="compare-grid mb-4">
+                    <div class="compare-bad">
+                        <i class="fas fa-times-circle text-3xl text-red-400 mb-2"></i>
+                        <p class="text-sm font-bold text-red-600 mb-1">절대 금지</p>
+                        <p class="text-xs text-slate-500">손/수건으로<br>렌즈 안쪽 문지르기</p>
+                        <p class="text-[10px] text-red-500 font-bold mt-2">코팅 즉시 손상!</p>
+                    </div>
+                    <div class="compare-good">
+                        <i class="fas fa-check-circle text-3xl text-green-400 mb-2"></i>
+                        <p class="text-sm font-bold text-green-600 mb-1">해결 방법</p>
+                        <p class="text-xs text-slate-500">김이 서리면<br>'안티포그액' 사용</p>
+                        <p class="text-[10px] text-green-600 font-bold mt-2">코팅 재생 효과!</p>
+                    </div>
+                </div>
+
+                <div class="content-box bg-slate-800 text-white">
+                    <p class="text-sm">
+                        <i class="fas fa-lightbulb text-yellow-400 mr-2"></i>
+                        <strong>꿀팁:</strong> 수영 전 렌즈 안쪽에 침을 살짝 바르고 물로 헹구면 임시 효과가 있어요!
+                    </p>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 2. 물샘 방지 -->
+            <section id="section-2" class="mb-10">
+                <h2 class="section-title">
+                    <span class="text-2xl">2</span>
+                    <span>물이 샌다면? 체크리스트</span>
+                </h2>
+
+                <div class="info-box mb-4">
+                    <p class="font-bold text-blue-600 text-sm mb-2">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        "꽉 조인다고 능사가 아닙니다"
+                    </p>
+                    <p class="text-sm text-slate-700">
+                        끈을 너무 세게 조이면 패킹이 눌려 틈이 생기거나 팬더 자국/통증만 심해집니다.
+                        수경은 <strong>물 유입을 최소화</strong>하는 장비이지, 100% 밀봉 장치가 아닙니다.
+                    </p>
+                </div>
+
+                <div class="bg-white border border-slate-200 rounded-2xl p-4 mb-4">
+                    <p class="font-bold text-slate-800 mb-3">
+                        <i class="fas fa-clipboard-check text-blue-500 mr-2"></i>
+                        누수 방지 체크리스트
+                    </p>
+
+                    <div class="checklist-item">
+                        <i class="fas fa-check text-blue-500 mt-1"></i>
+                        <div>
+                            <strong class="text-sm">이물질 확인</strong>
+                            <p class="text-xs text-slate-500">머리카락, 수모 끝, 눈썹이 패킹 틈새에 끼어있지 않은지 확인하세요.</p>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item">
+                        <i class="fas fa-check text-blue-500 mt-1"></i>
+                        <div>
+                            <strong class="text-sm">코받침 조절</strong>
+                            <p class="text-xs text-slate-500">얼굴형에 맞게 코받침 사이즈를 변경해보세요. (가장 흔한 원인!)</p>
+                        </div>
+                    </div>
+
+                    <div class="checklist-item border-b-0 bg-blue-50 -mx-4 px-4 py-3 rounded-b-xl">
+                        <i class="fas fa-star text-yellow-500 mt-1"></i>
+                        <div>
+                            <strong class="text-sm text-blue-700">대왕 렌즈 착용 꿀팁</strong>
+                            <p class="text-xs text-blue-600">
+                                렌즈 알이 큰 만큼 시야가 넓지만, 얼굴 굴곡에 더 민감합니다.
+                                <strong>끈 위치를 정수리 쪽으로 올려</strong> 고정력을 높여주세요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 3. 렌즈 타입별 시야 -->
+            <section id="section-3" class="mb-10">
+                <h2 class="section-title">
+                    <span class="text-2xl">3</span>
+                    <span>"어둡다?" 렌즈별 특성 이해</span>
+                </h2>
+
+                <p class="text-base text-slate-600 mb-4">
+                    저희 제품은 <strong>큰 렌즈(Wide View)</strong>로 탁 트인 시야를 제공하지만,
+                    렌즈 코팅 종류에 따라 보이는 느낌(밝기)이 다릅니다.
+                </p>
+
+                <!-- 미러 렌즈 -->
+                <div class="lens-card mb-4">
+                    <div class="bg-slate-800 p-4 flex justify-between items-center text-white">
+                        <span class="font-bold">
+                            <i class="fas fa-gem mr-2 text-cyan-300"></i>미러(Mirror) 렌즈
+                        </span>
+                        <span class="text-[10px] bg-white/20 px-2 py-1 rounded">실내/강습/스타일</span>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <ul class="text-sm space-y-2 text-slate-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-eye-slash text-slate-400 mt-1"></i>
+                                <span><strong>프라이버시:</strong> 밖에서 내 눈이 잘 보이지 않음</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-sun text-slate-400 mt-1"></i>
+                                <span><strong>시야:</strong> 선글라스처럼 <strong class="text-orange-600">약간 어둡게</strong> 보입니다</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-exclamation-circle text-orange-400 mt-1"></i>
+                                <span><strong>주의:</strong> 실내 수영장이 어두우면 더 어둡게 느껴질 수 있습니다</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 편광 렌즈 -->
+                <div class="lens-card mb-4">
+                    <div class="bg-indigo-600 p-4 flex justify-between items-center text-white">
+                        <span class="font-bold">
+                            <i class="fas fa-sun mr-2 text-yellow-300"></i>편광(Polarized) 렌즈
+                        </span>
+                        <span class="text-[10px] bg-white/20 px-2 py-1 rounded">야외/오픈워터/빛반사</span>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <ul class="text-sm space-y-2 text-slate-700">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-shield-alt text-indigo-400 mt-1"></i>
+                                <span><strong>기능:</strong> 물 표면의 <strong class="text-indigo-600">반사광(눈부심)을 차단</strong>해 눈이 편안함</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check-circle text-indigo-400 mt-1"></i>
+                                <span><strong>시야:</strong> 야외/강한 조명 아래서 선명도가 극대화됩니다</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-exclamation-circle text-orange-400 mt-1"></i>
+                                <span><strong>주의:</strong> 조명이 약한 실내에서는 편광 효과 체감이 덜할 수 있습니다</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <p class="text-sm text-slate-700">
+                        <i class="fas fa-lightbulb text-green-500 mr-2"></i>
+                        <strong>선택 팁:</strong> 실내 수영장 위주라면 <strong>투명 또는 미러</strong>,
+                        야외 바다/호캉스라면 <strong>편광</strong>을 추천드려요!
+                    </p>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 4. 관리 및 세척 -->
+            <section id="section-4" class="mb-10">
+                <h2 class="section-title">
+                    <span class="text-2xl">4</span>
+                    <span>수명 연장 세척법</span>
+                </h2>
+
+                <p class="text-base text-slate-600 mb-4">
+                    올바른 관리만으로도 수경 수명을 <strong>2배 이상</strong> 늘릴 수 있어요!
+                </p>
+
+                <div class="compare-grid mb-4">
+                    <div class="compare-bad">
+                        <i class="fas fa-times-circle text-3xl text-red-400 mb-3"></i>
+                        <p class="text-sm font-bold text-red-600 mb-2">절대 금지</p>
+                        <ul class="text-xs text-slate-600 space-y-1 text-left">
+                            <li>• 손/휴지로 렌즈 닦기</li>
+                            <li>• 뜨거운 물/사우나</li>
+                            <li>• 젖은 수영복과 함께 보관</li>
+                            <li>• 직사광선에 방치</li>
+                        </ul>
+                    </div>
+                    <div class="compare-good">
+                        <i class="fas fa-check-circle text-3xl text-green-400 mb-3"></i>
+                        <p class="text-sm font-bold text-green-600 mb-2">올바른 습관</p>
+                        <ul class="text-xs text-slate-600 space-y-1 text-left">
+                            <li>• 흐르는 물에 가볍게 헹구기</li>
+                            <li>• 그늘에서 자연 건조</li>
+                            <li>• 전용 케이스에 보관</li>
+                            <li>• 렌즈 보호 필름 유지</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <p class="text-sm text-slate-700">
+                        <i class="fas fa-exclamation-circle text-red-500 mr-2"></i>
+                        미러/편광 코팅은 <strong>모래, 소금기, 거친 수건</strong>에 매우 약합니다!
+                        사용 후 반드시 맑은 물에 헹궈주세요.
+                    </p>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 5. 착용감과 자국 -->
+            <section id="section-5" class="mb-10">
+                <h2 class="section-title">
+                    <span class="text-2xl">5</span>
+                    <span>자국 & 압박감 (팬더 자국)</span>
+                </h2>
+
+                <p class="text-base text-slate-600 mb-4">
+                    장시간 착용 시 눈 주위에 자국이 남는 것은 <strong>자연스러운 현상</strong>입니다.
+                    다만 통증이 심하다면 조절이 필요해요.
+                </p>
+
+                <div class="content-box">
+                    <div class="flex items-start gap-3">
+                        <span class="text-3xl">🐼</span>
+                        <div>
+                            <p class="font-bold text-slate-800 mb-2">팬더 자국 줄이는 방법</p>
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span>스트랩(끈) 장력을 조금 느슨하게 조절</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span><strong>"물이 안 샐 정도로만"</strong> 조이는 것이 베스트</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span>30분마다 수경 위치를 살짝 조정</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 6. 와이드 렌즈 특성 -->
+            <section id="section-6" class="mb-10">
+                <h2 class="section-title">
+                    <span class="text-2xl">6</span>
+                    <span>와이드 렌즈 특성 안내</span>
+                </h2>
+
+                <div class="info-box mb-4">
+                    <p class="text-sm text-slate-700">
+                        180도 광각 구현을 위한 렌즈 곡률 특성상,
+                        <strong>물 밖에서는 약간의 어지러움이나 왜곡</strong>이 느껴질 수 있습니다.
+                    </p>
+                </div>
+
+                <p class="text-base text-slate-600 mb-4">
+                    이는 수중에서 선명하고 넓은 시야를 확보하기 위한 <strong>정상적인 구조</strong>입니다.
+                    물속에 들어가면 왜곡이 사라지고 시원하게 넓은 시야가 펼쳐집니다!
+                </p>
+
+                <div class="bg-gradient-to-r from-blue-50 to-cyan-50 border border-blue-200 rounded-2xl p-4">
+                    <div class="flex items-center gap-4">
+                        <div class="text-center">
+                            <div class="stat-number">180°</div>
+                            <p class="text-xs text-slate-500">파노라마 시야</p>
+                        </div>
+                        <div class="flex-1">
+                            <p class="text-sm text-slate-700">
+                                일반 수경(70°) 대비 <strong class="text-blue-600">2.5배 넓은 시야</strong>를 제공합니다.
+                                옆 레인 수영자, 벽 충돌 위험을 미리 감지할 수 있어요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- FAQ 섹션 -->
+            <section id="section-faq" class="mb-10">
+                <h2 class="section-title mb-6">
+                    <i class="fas fa-question-circle text-blue-500"></i>
+                    <span>자주 묻는 질문</span>
+                </h2>
+
+                <details>
+                    <summary>
+                        <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">Q</span>
+                        안티포그 효과는 얼마나 지속되나요?
+                    </summary>
+                    <div class="faq-content">
+                        개인차와 관리 환경에 따라 약 1~3개월간 효과가 지속됩니다.
+                        효과가 약해지면 '안티포그 액'을 사용하여 주기적으로 보충해 주세요.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">Q</span>
+                        미러 렌즈가 너무 어두워요. 불량인가요?
+                    </summary>
+                    <div class="faq-content">
+                        미러 렌즈는 선글라스와 같은 원리로 빛을 반사시켜 약간 어둡게 보이는 것이 정상입니다.
+                        실내 조명이 어두운 수영장에서는 '투명' 렌즈를 권장드립니다.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">Q</span>
+                        수경 안으로 물이 조금씩 들어와요.
+                    </summary>
+                    <div class="faq-content">
+                        대부분 머리카락이 실리콘 사이에 끼었거나, 코받침 간격이 맞지 않을 때 발생합니다.
+                        스트랩을 세게 조이기보다 코받침을 조절하고, 끈 위치를 정수리 쪽으로 올려보세요.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">Q</span>
+                        착용 후 반품이 가능한가요?
+                    </summary>
+                    <div class="faq-content">
+                        수경은 위생용품으로 분류되어 착용 후에는 재판매가 불가능합니다.
+                        단순 변심에 의한 반품은 제품 개봉 전(보호 필름 미제거) 상태에서만 가능합니다.
+                    </div>
+                </details>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 마무리 CTA -->
+            <section class="text-center py-8">
+                <div class="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-6 py-2 rounded-full text-sm font-bold mb-4">
+                    프로 수영러가 되는 길
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-3">
+                    올바른 관리법으로<br>
+                    더 선명하고 쾌적한 수영을 즐기세요!
+                </h3>
+                <p class="text-sm text-slate-500 mb-6">
+                    제품 특성을 이해하고 올바르게 관리하면<br>
+                    수경 수명과 만족도가 확 달라집니다.
+                </p>
+
+                <div class="bg-slate-100 rounded-2xl p-4 inline-block">
+                    <p class="text-xs text-slate-500 mb-2">추가 문의가 있으시다면</p>
+                    <p class="text-sm font-bold text-slate-700">
+                        <i class="fas fa-comment-dots text-green-500 mr-1"></i>
+                        네이버 톡톡으로 편하게 문의해주세요
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 푸터 -->
+        <footer class="bg-slate-800 text-white p-6 text-center">
+            <p class="text-sm text-slate-300 mb-2">
+                LUS 와이드 뷰 프리미엄 수경
+            </p>
+            <p class="text-[10px] text-slate-500">
+                Copyright &copy; LUS. All rights reserved.
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- 우측 TOC 사이드바 -->
+    <aside class="toc-sidebar">
+        <div class="toc-card">
+            <h3 class="toc-title">
+                <i class="fas fa-list-ul mr-2"></i>목차
+            </h3>
+            <ul class="toc-list" id="toc-list">
+                <li class="toc-item">
+                    <a href="#section-1" class="toc-link" data-section="section-1">
+                        <span class="toc-number">1</span>
+                        <span>안티포그의 진실</span>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="#section-2" class="toc-link" data-section="section-2">
+                        <span class="toc-number">2</span>
+                        <span>물샘 체크리스트</span>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="#section-3" class="toc-link" data-section="section-3">
+                        <span class="toc-number">3</span>
+                        <span>렌즈별 특성</span>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="#section-4" class="toc-link" data-section="section-4">
+                        <span class="toc-number">4</span>
+                        <span>수명 연장 세척법</span>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="#section-5" class="toc-link" data-section="section-5">
+                        <span class="toc-number">5</span>
+                        <span>자국 & 압박감</span>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="#section-6" class="toc-link" data-section="section-6">
+                        <span class="toc-number">6</span>
+                        <span>와이드 렌즈 특성</span>
+                    </a>
+                </li>
+                <li class="toc-item">
+                    <a href="#section-faq" class="toc-link" data-section="section-faq">
+                        <span class="toc-number"><i class="fas fa-question text-[8px]"></i></span>
+                        <span>자주 묻는 질문</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 빠른 링크 -->
+        <div class="toc-card mt-4">
+            <h3 class="toc-title">
+                <i class="fas fa-bolt mr-2"></i>빠른 이동
+            </h3>
+            <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;"
+               class="flex items-center gap-2 text-xs text-slate-500 hover:text-blue-500 mb-2">
+                <i class="fas fa-arrow-up"></i> 맨 위로
+            </a>
+            <a href="#section-faq"
+               class="flex items-center gap-2 text-xs text-slate-500 hover:text-blue-500">
+                <i class="fas fa-question-circle"></i> FAQ 바로가기
+            </a>
+        </div>
+    </aside>
+
+</div>
+
+<script>
+    // TOC 활성화 스크립트
+    document.addEventListener('DOMContentLoaded', function() {
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        // 스크롤 시 현재 섹션 하이라이트
+        function highlightCurrentSection() {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-section') === current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightCurrentSection);
+        highlightCurrentSection(); // 초기 실행
+
+        // 부드러운 스크롤
+        tocLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
