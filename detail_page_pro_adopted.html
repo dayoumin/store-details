@@ -165,27 +165,18 @@
       }
     }
 
-    /* Print Styles */
+    /* Print Styles - Minimal (PNG 저장이 권장됨) */
     @media print {
+      /* 저장 버튼만 숨김 */
       .save-btn-container {
         display: none !important;
       }
 
-      body {
-        background: white !important;
+      /* 배경색 강제 출력 */
+      body, * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-      }
-
-      .store-container {
-        max-width: 100% !important;
-        box-shadow: none !important;
-        margin: 0 !important;
-      }
-
-      .section-block {
-        break-inside: avoid;
-        page-break-inside: avoid;
+        color-adjust: exact !important;
       }
     }
   </style>
@@ -197,12 +188,12 @@
     <button onclick="saveAsImage()"
       class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all">
       <i class="fas fa-camera-retro"></i>
-      <span class="font-outfit text-sm tracking-widest uppercase">이미지로 저장 (PNG)</span>
+      <span class="font-outfit text-sm tracking-widest uppercase">이미지로 저장 (권장)</span>
     </button>
     <button onclick="window.print()"
       class="bg-black/80 backdrop-blur-md hover:bg-black text-white font-bold py-4 px-8 rounded-full shadow-2xl flex items-center gap-3 transition-all">
       <i class="fas fa-file-pdf"></i>
-      <span class="font-outfit text-sm tracking-widest uppercase">PDF로 저장 (권장)</span>
+      <span class="font-outfit text-sm tracking-widest uppercase">PDF로 저장</span>
     </button>
   </div>
 
@@ -392,53 +383,20 @@
       <div class="text-center mb-16">
         <span class="label-badge bg-red-500/20 text-red-400 border border-red-500/30">잠깐, 이건 착각입니다</span>
         <h2 class="headline">"작은 렌즈가<br><span class="text-red-400">좋은 거 아냐?"</span></h2>
+        <p class="text-slate-300 text-lg mt-6">선수용은 <strong class="text-red-400">0.01초</strong>를 위한 장비. 당신에겐 <strong class="text-blue-400">안전과 편안함</strong>이 필요합니다.</p>
       </div>
 
-      <div class="max-w-3xl mx-auto mb-16 text-center">
-        <div class="bg-slate-800/50 border border-slate-700 rounded-2xl p-5 mb-8 max-w-lg mx-auto">
-          <p class="text-slate-400 text-sm leading-relaxed">
-            <i class="fas fa-tv mr-2 text-slate-500"></i>TV에서 본 올림픽 선수들의 수경, 기억나시죠?<br>
-            날렵하고 작은 렌즈. <strong class="text-white">"저게 좋은 거구나"</strong> 생각하셨을 겁니다.
-          </p>
-        </div>
-        <h4 class="text-2xl font-bold text-white mb-6">하지만 그건 <span class="text-red-400">'0.01초'</span>를 위한 선수 전용 장비입니다.
-        </h4>
-        <p class="text-slate-300 text-lg leading-relaxed mb-6">
-          작은 렌즈는 물의 저항을 줄여 <strong class="text-white">기록 단축</strong>에만 집중한 설계.<br class="hidden md:block">
-          그 대가로? <strong class="text-red-400">시야의 60%</strong>와 <strong class="text-red-400">편안함</strong>을 포기했죠.
-        </p>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-6 mb-8 max-w-xl mx-auto">
-          <p class="text-slate-400 text-sm mb-3">매일 건강을 위해 수영장을 찾는 당신에게</p>
-          <p class="text-white text-lg font-bold">
-            "레인 끝 벽이 갑자기 나타나 깜짝 놀란 적 있으신가요?"<br>
-            "옆 사람이 언제 오는지 몰라 부딪힐 뻔한 적은요?"
-          </p>
-        </div>
-        <p class="text-blue-400 text-xl font-bold">
-          <span class="underline decoration-2">당신의 안전과 편안함</span>을 위해 설계되었습니다.
-        </p>
-      </div>
-
-      <div class="max-w-4xl mx-auto space-y-16">
-        <div class="space-y-6">
+      <div class="max-w-4xl mx-auto space-y-12">
+        <!-- 1. Radar Chart -->
+        <div class="space-y-4">
           <div
             class="h-[450px] bg-white/5 border border-white/10 rounded-[40px] p-6 flex items-center justify-center overflow-hidden">
             <img src="assets/radar_chart_final.png" alt="성능 비교 레이더 차트" class="max-w-full max-h-full object-contain">
           </div>
-          <div class="bg-blue-500/10 p-10 rounded-[30px] border border-blue-500/20 text-center">
-            <h5 class="text-[#38bdf8] text-xl font-bold mb-4 flex items-center justify-center gap-3">
-              <i class="fas fa-chart-pie"></i>
-              <span>5가지 핵심 성능 비교</span>
-            </h5>
-            <p class="text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              선수용은 <strong class="text-red-400">'속도' 하나</strong>만을 위해 나머지 4가지를 희생했습니다.<br>
-              루스 수경은 <strong class="text-blue-400">편안함·시야·안전성·품질</strong> 모두를 잡았습니다.
-            </p>
-          </div>
         </div>
 
-        <!-- 2. Technical Comparison Block (Vertical) -->
-        <div class="space-y-6">
+        <!-- 2. Lens Comparison -->
+        <div class="space-y-4">
           <div
             class="bg-gradient-to-b from-blue-400/20 to-transparent rounded-[40px] p-2 border border-blue-400/30 overflow-hidden shadow-[0_0_50px_rgba(56,189,248,0.1)]">
             <div class="bg-slate-900 rounded-[38px] p-8">
@@ -446,26 +404,16 @@
                 class="rounded-2xl w-full h-auto shadow-2xl brightness-110 contrast-110">
             </div>
           </div>
-          <div class="bg-blue-500/10 p-10 rounded-[30px] border border-blue-500/20 text-center">
-            <h5 class="text-[#38bdf8] text-xl font-bold mb-4 flex items-center justify-center gap-3">
-              <i class="fas fa-vector-square"></i>
-              <span>렌즈 크기가 만드는 결정적 차이</span>
-            </h5>
-            <div class="flex justify-center gap-8 mb-6">
-              <div class="text-center">
-                <div class="text-red-400 text-4xl font-black">70°</div>
-                <div class="text-xs text-slate-400 mt-1">선수용 시야각</div>
-              </div>
-              <div class="text-slate-500 text-2xl flex items-center">→</div>
-              <div class="text-center">
-                <div class="text-blue-400 text-4xl font-black">180°</div>
-                <div class="text-xs text-slate-400 mt-1">LUS 시야각</div>
-              </div>
+          <div class="flex justify-center gap-12 py-4">
+            <div class="text-center">
+              <div class="text-red-400 text-5xl font-black">70°</div>
+              <div class="text-xs text-slate-400 mt-2">선수용</div>
             </div>
-            <p class="text-sm text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              작은 렌즈의 수중 저항 감소 효과는 <strong class="text-slate-400">단 0.03%</strong>.<br>
-              그 미미한 차이를 위해 <strong class="text-red-400">시야의 60%를 포기</strong>할 이유가 있을까요?
-            </p>
+            <div class="text-slate-500 text-3xl flex items-center">→</div>
+            <div class="text-center">
+              <div class="text-blue-400 text-5xl font-black">180°</div>
+              <div class="text-xs text-slate-400 mt-2">LUS</div>
+            </div>
           </div>
         </div>
       </div>
