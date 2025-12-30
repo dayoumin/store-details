@@ -165,6 +165,9 @@
         <button onclick="switchView('detail_adopted', this)" class="nav-tab active">
           <i class="fas fa-check-circle"></i> <span>채택 (Adopted)</span>
         </button>
+        <button onclick="switchView('detail_iso_certified', this)" class="nav-tab">
+          <i class="fas fa-certificate"></i> <span>ISO 인증</span>
+        </button>
         <button onclick="switchView('detail_backup1', this)" class="nav-tab">
           <i class="fas fa-history"></i> <span>백업 1 (Backup)</span>
         </button>
@@ -324,6 +327,10 @@
         case 'detail_adopted':
           targetFile = 'detail_page_pro_adopted.html';
           displayName = 'Adopted';
+          break;
+        case 'detail_iso_certified':
+          targetFile = 'detail_page_iso_certified.html';
+          displayName = 'ISO 인증';
           break;
         case 'detail_backup1':
           targetFile = 'detail_page_backup1.html';
